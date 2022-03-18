@@ -7,6 +7,7 @@ import 'antd/dist/antd.css'
 import "./App.css";
 import Home from './components/home'
 import Buy from './components/buy'
+import Web3 from "web3";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -25,38 +26,38 @@ class App extends Component {
     setIsModalVisible_network: false
   };
 
-  componentDidMount = async () => {
-    try {
-      // Get network provider and web3 instance.
-      console.log("ddd");
-      const web3 = await getWeb3();
+  // componentDidMount = async () => {
+  //   try {
+  //     // Get network provider and web3 instance.
+  //     console.log("ddd");
+  //     const web3 = await getWeb3();
 
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
+  //     // Use web3 to get the user's accounts.
+  //     const accounts = await web3.eth.getAccounts();
 
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = Douya.networks[networkId];
-      const instance = new web3.eth.Contract(
-        Douya.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
+  //     // Get the contract instance.
+  //     const networkId = await web3.eth.net.getId();
+  //     const deployedNetwork = Douya.networks[networkId];
+  //     const instance = new web3.eth.Contract(
+  //       Douya.abi,
+  //       deployedNetwork && deployedNetwork.address,
+  //     );
 
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      // this.setState({ web3, accounts, contract: instance }, this.runExample);
-      this.setState({ web3, accounts, contract: instance, chainId: networkId });
-      console.log("web3", this.state.web3);
-      console.log("accounts", this.state.accounts);
-      console.log("contract", this.state.contract);
-    } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-      );
-      console.error(error);
-    }
-  };
+  //     // Set web3, accounts, and contract to the state, and then proceed with an
+  //     // example of interacting with the contract's methods.
+  //     // this.setState({ web3, accounts, contract: instance }, this.runExample);
+  //     this.setState({ web3, accounts, contract: instance, chainId: networkId });
+  //     console.log("web3", this.state.web3);
+  //     console.log("accounts", this.state.accounts);
+  //     console.log("contract", this.state.contract);
+  //   } catch (error) {
+  //     // Catch any errors for any of the above operations.
+  //     alert(
+  //       `Failed to load web3, accounts, or contract. Check console for details.`,
+  //     );
+  //     console.error(error);
+  //   }
+  // };
 
   runExample = async () => {
     const { accounts, contract } = this.state;
@@ -71,34 +72,59 @@ class App extends Component {
     // this.setState({ storageValue: response });
   };
 
-  // connectToWallet = async () => {
-  //   // Get network provider and web3 instance.
-  //   const web3 = await getWeb3();
-  //   console.log("getweb3", web3);
-  //   this.setState({ web3 });
+  connectToWallet = async () => {
+    // Get network provider and web3 instance.
+    // Modern dapp browsers...
+    let web3 = null;
+    if (window.ethereum) {
+      web3 = new Web3(window.ethereum);
+      try {
+        // Request account access if needed
+        await window.ethereum.enable();
+        // Accounts now exposed
+      } catch (error) {
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      // Use Mist/MetaMask's provider.
+      web3 = window.web3;
+      console.log("Injected web3 detected.");
+    }
+    // Fallback to localhost; use dev console port by default...
+    else {
+      const provider = new Web3.providers.HttpProvider(
+        "http://127.0.0.1:8545"
+      );
+      web3 = new Web3(provider);
+      console.log("No web3 instance injected, using Local web3.");
+    }
+    console.log("getweb3", web3);
 
-  //   if (web3) {
-  //     // Use web3 to get the user's accounts.
-  //     const accounts = await web3.eth.getAccounts();
+    this.setState({ web3 });
 
-  //     // Get the contract instance.
-  //     const networkId = await web3.eth.net.getId();
-  //     const deployedNetwork = Douya.networks[networkId];
-  //     const instance = new web3.eth.Contract(
-  //       Douya.abi,
-  //       deployedNetwork && deployedNetwork.address,
-  //     );
+    if (web3) {
+      // Use web3 to get the user's accounts.
+      const accounts = await web3.eth.getAccounts();
 
-  //     // console.log("accounts is", accounts);
-  //     // console.log("networkId is", networkId);
-  //     // console.log("deployedNetwork is", deployedNetwork);
-  //     // console.log("instance is ", instance);
+      // Get the contract instance.
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = Douya.networks[networkId];
+      const instance = new web3.eth.Contract(
+        Douya.abi,
+        deployedNetwork && deployedNetwork.address,
+      );
 
-  //     // Set web3, accounts, and contract to the state, and then proceed with an
-  //     // example of interacting with the contract's methods.
-  //     this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
-  //   }
-  // }
+      // console.log("accounts is", accounts);
+      // console.log("networkId is", networkId);
+      // console.log("deployedNetwork is", deployedNetwork);
+      // console.log("instance is ", instance);
+
+      // Set web3, accounts, and contract to the state, and then proceed with an
+      // example of interacting with the contract's methods.
+      this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
+    }
+  }
 
   render() {
     // if (!this.state.web3) {
