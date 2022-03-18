@@ -60,7 +60,7 @@ class App extends Component {
     return (
       <Layout className="layout">
         <Header>
-          <div className="logo">Douya</div>
+          <div className="logo"><a href="/" style={{color: '#f36b3b'}}><b>Douya</b></a></div>
           <Menu theme="dark" mode="horizontal">
             <Menu.Item key="1">Buy</Menu.Item>
             <Menu.Item key="2">NFT</Menu.Item>
@@ -70,6 +70,12 @@ class App extends Component {
             <Menu.Item key="6">Connect</Menu.Item>
           </Menu>
         </Header>
+
+
+
+
+
+
         <Content className="content" style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
             <Row>
@@ -88,6 +94,14 @@ class App extends Component {
             </Row>
           </div>
         </Content>
+
+
+
+
+
+
+
+
         <Footer style={{ textAlign: 'center' }}>Made with ❤ by Bohr @2022 email: crypto18mo@gmail.com</Footer>
       </Layout>
     );
