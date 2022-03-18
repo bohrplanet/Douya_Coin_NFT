@@ -74,12 +74,12 @@ export default function Buy(props) {
                 <Col span={12} >
                     <div className='buy_main_left'>
                         <Card title="My wallet" bordered={true} style={{ width: 1000, height: 350 }}>
-                            <span>Eth: </span>
-                            <span>{eth / (10 ** 18)}</span>
+                            <span className='font'>Eth: </span>
+                            <span className='font'>{eth / (10 ** 18)}</span>
                             <br />
                             <br />
-                            <span>Douya Coin: </span>
-                            <span>{douyacoin / (10 ** 18)}</span>
+                            <span className='font'>Douya Coin: </span>
+                            <span className='font'>{douyacoin / (10 ** 18)}</span>
                             <br />
                             <br />
                             {/* <span>Transfer Douya Coin: </span>
