@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.layout {
+  /* background-color: #001529; */
+}
+
 .App-logo {
   height: 40vmin;
 }
@@ -20,3 +24,43 @@
 .App-link {
   color: #09d3ac;
 }
+
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  color: #fff;
+  font-size: calc(9px + 2vmin);
+}
+
+/* .content {
+  background-color: #001529;
+}
+
+.site-layout-content {
+  background-color: #001529;
+} */
+
+/* .ant-row-rtl .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+} */
+
+.main_left {
+  /* margin-top: 100px;
+  margin-bottom: 100px; */
+  padding-top: 200px;
+  padding-left: 500px;
+  font-size: 80px;
+  color: #f36b3b;
+}
+
+.main_right {
+  /* margin-top: 100px;
+  margin-bottom: 100px; */
+
+}
+
+/* .site-layout-background {
+  background: #fff;
+} */
