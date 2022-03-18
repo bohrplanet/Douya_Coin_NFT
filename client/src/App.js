@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Douya from "./contracts/Douya.json";
 import getWeb3 from "./getWeb3";
-import { Layout, Menu, Row, Col, Image } from 'antd';
+import { Layout, Menu } from 'antd';
+import { Link, Route, Routes, Navigate } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import "./App.css";
-import big_pic from './img/big_pic.png'
+import Home from './components/home'
+import Buy from './components/buy'
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -60,47 +62,26 @@ class App extends Component {
     return (
       <Layout className="layout">
         <Header>
-          <div className="logo"><a href="/" style={{color: '#f36b3b'}}><b>Douya</b></a></div>
+          <div className="logo"><a href="/" style={{ color: '#f36b3b' }}><b>Douya</b></a></div>
           <Menu theme="dark" mode="horizontal">
-            <Menu.Item key="1">Buy</Menu.Item>
-            <Menu.Item key="2">NFT</Menu.Item>
-            <Menu.Item key="3">Gaming</Menu.Item>
-            <Menu.Item key="4">Staking</Menu.Item>
-            <Menu.Item key="5">About Douya</Menu.Item>
-            <Menu.Item key="6">Connect</Menu.Item>
+
+            {/* 路由链接 */}
+            <Menu.Item key="1"><Link to="/home">Home</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/buy">Buy</Link></Menu.Item>
+
+            <Menu.Item key="3">NFT</Menu.Item>
+            <Menu.Item key="4">Gaming</Menu.Item>
+            <Menu.Item key="5">Staking</Menu.Item>
+            <Menu.Item key="6">About Douya</Menu.Item>
+            <Menu.Item key="7">Connect</Menu.Item>
           </Menu>
         </Header>
 
-
-
-
-
-
-        <Content className="content" style={{ padding: '0 50px' }}>
-          <div className="site-layout-content">
-            <Row>
-              <Col span={12} className="main_left">
-                <h1 style={{ color: "#f36b3b"}}>Douya</h1>
-                <h1 style={{ color: "#f36b3b"}}>MΞmΞ coin</h1>
-              </Col>
-              <Col span={12} className="main_right"> 
-                <Image
-                  src={big_pic}
-                  preview={false}
-                  height={900}
-                  width={900}
-                />
-              </Col>
-            </Row>
-          </div>
-        </Content>
-
-
-
-
-
-
-
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/buy" element={<Buy />} />
+          <Route path="/" element={<Navigate to="/home"/>} />
+        </Routes>
 
         <Footer style={{ textAlign: 'center' }}>Made with ❤ by Bohr @2022 email: crypto18mo@gmail.com</Footer>
       </Layout>

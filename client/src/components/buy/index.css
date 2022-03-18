@@ -1,0 +1,21 @@
+.buy_main_left {
+    display: flex;
+    justify-content: center;
+}
+
+.buy_main_right {
+    display: flex;
+    justify-content: center;
+}
+
+.mywallet {
+    text-align: center;
+    font-size: 30px;
+}
+
+.buy {
+    margin-top: 100px;
+    /* display: flex;
+    justify-content: stretch; */
+    justify-content: 'center'
+}
