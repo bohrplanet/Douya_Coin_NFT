@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Card, Input, Button } from 'antd';
 import "./index.css"
 import Web3 from 'web3';
+import store from '../../redux/store'
 
 export default function Buy(props) {
 
@@ -11,24 +12,53 @@ export default function Buy(props) {
     const [eth, setEth] = React.useState(0)
     const [douyacoin, setDouyacoin] = React.useState(0)
 
-    console.log("props web3", props.web3);
-    console.log("props contract ", props.contract);
-    console.log("props accounts", props.accounts);
-    console.log("props accounts[0]", props.accounts[0]);
+    // console.log("props web3", props.web3);
+    // console.log("props contract ", props.contract);
+    // console.log("props accounts", props.accounts);
+    // console.log("props accounts[0]", props.accounts[0]);
 
-    props.contract.methods.balanceOf(props.accounts[0]).call({ from: props.accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("result", setDouyacoin(result));
-        console.log("error", error);
-    });
+    React.useEffect(() => {
 
-    props.web3.eth.getBalance(props.accounts[0], function (error, result) {
-        console.log("result", setEth(result));
-        console.log("error", error);
-    });
+        let webObj = store.getState();
+
+        const { web3, accounts, contract } = webObj;
+
+        // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
+        // 如果有web3对象，那么就调用方法，把eth和豆芽币的值拿到，set给state
+        console.log("from redux", webObj);
+
+        if (webObj !== 0) {
+            contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                if (result !== douyacoin) {
+                    console.log("result", setDouyacoin(result));
+                    console.log("error", error);
+                }
+            });
+
+            web3.eth.getBalance(accounts[0], function (error, result) {
+                if (result !== eth) {
+                    console.log("result", setEth(result));
+                    console.log("error", error);
+                }
+            });
+        }
+
+        else {
+
+        }
+
+        // component will unmount
+        return () => { }
+    }, [eth, douyacoin])
 
     function withdraw() {
+
+        let webObj = store.getState();
+
+        const { web3, accounts, contract } = webObj;
+
         console.log("x", x.current.input.value);
-        props.contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: props.accounts[0], gas: 1000000 }, function (error, result) {
+        contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
             console.log("交易已经发出,等待钱包响应");
         }).on('transactionHash', function (hash) {
             console.log("1111111");
@@ -48,8 +78,13 @@ export default function Buy(props) {
     }
 
     function deposit() {
+
+        let webObj = store.getState();
+
+        const { web3, accounts, contract } = webObj;
+        
         console.log("y", y.current.input.value);
-        props.contract.methods.exchange().send({ from: props.accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
+        contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
             console.log("交易已经发出,等待钱包响应");
         }).on('transactionHash', function (hash) {
             console.log("1111111");

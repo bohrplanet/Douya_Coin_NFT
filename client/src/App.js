@@ -8,6 +8,7 @@ import "./App.css";
 import Home from './components/home'
 import Buy from './components/buy'
 import Web3 from "web3";
+import store from './redux/store'
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -123,6 +124,20 @@ class App extends Component {
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
+
+      console.log("connectWallet", web3);
+
+      let web3Obj = {
+        web3: web3,
+        accounts: accounts,
+        contract: instance
+      }
+
+      // 在这里，将web3等相关的对象交给redux管理
+      const action = {type: 'increment', data: web3Obj};
+
+      store.dispatch(action);
+
     }
   }
 
@@ -150,7 +165,7 @@ class App extends Component {
 
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/buy" element={<Buy web3={this.state.web3} contract={this.state.contract} accounts={this.state.accounts}/>} />
+          <Route path="/buy" element={<Buy />} />
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
 
