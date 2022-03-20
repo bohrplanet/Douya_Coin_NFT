@@ -7,6 +7,8 @@ import 'antd/dist/antd.css'
 import "./App.css";
 import Home from './components/home'
 import Buy from './components/buy'
+import Market from "./components/market";
+import About from './components/about'
 import Web3 from "web3";
 import store from './redux/store'
 
@@ -157,15 +159,18 @@ class App extends Component {
 
             <Menu.Item key="3">NFT</Menu.Item>
             <Menu.Item key="4">Gaming</Menu.Item>
-            <Menu.Item key="5">Staking</Menu.Item>
-            <Menu.Item key="6">About Douya</Menu.Item>
-            <Menu.Item key="7" onClick={this.connectToWallet}>Connect</Menu.Item>
+            <Menu.Item key="5"><Link to="/market">Market</Link></Menu.Item>
+            <Menu.Item key="6">Staking</Menu.Item>
+            <Menu.Item key="7"><Link to="/about">About Douya</Link></Menu.Item>
+            <Menu.Item key="8" onClick={this.connectToWallet}>Connect</Menu.Item>
           </Menu>
         </Header>
 
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/buy" element={<Buy />} />
+          <Route path="/market" element={<Market />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
 

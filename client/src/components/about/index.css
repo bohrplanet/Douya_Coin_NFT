@@ -1,0 +1,12 @@
+.about {
+    height: 900px;
+    display: flex;
+    align-items: center;
+}
+
+.about_text {
+    text-align: center;
+    margin: auto;
+    font-size: 45px;
+}
+
