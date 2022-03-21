@@ -3,6 +3,7 @@ import { Divider, Row, Col, Card, Input, Button, Image } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
 import DouyaNFT from "../../contracts/DouyaNFT.json"
+import Market from "../../contracts/Market.json"
 
 
 export default function DisplayCardForMarket(props) {
@@ -31,16 +32,16 @@ export default function DisplayCardForMarket(props) {
 
             // Get the contract instance.
             const networkId = await web3.eth.net.getId();
-            const deployedNetwork = DouyaNFT.networks[networkId];
+            const deployedNetwork = Market.networks[networkId];
             const contract = new web3.eth.Contract(
-                DouyaNFT.abi,
+                Market.abi,
                 deployedNetwork && deployedNetwork.address,
             );
 
             console.log("contract is ", contract);
 
             // dig 方法
-            const count = await contract.methods.dig(accounts[0], nft.tokenId).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+            const count = await contract.methods.buy(nft.tokenId).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 console.log("result", result);
                 console.log("error", error);
             });
