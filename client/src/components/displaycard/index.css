@@ -10,3 +10,12 @@
 .button {
     margin-top: 60px;
 }
+
+.power_value {
+    font-size: 30px;
+    text-align: center;
+}
+
+.power_div {
+    text-align: center;
+}

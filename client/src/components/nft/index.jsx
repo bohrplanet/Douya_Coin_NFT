@@ -21,6 +21,8 @@ export default function Nft(props) {
         console.log("from redux at NFT page", webObj);
         // console.log("accounts", accounts[0]);
 
+        const nfts = []
+
         if (webObj !== 0) {
 
             // Use web3 to get the user's accounts.
@@ -36,26 +38,45 @@ export default function Nft(props) {
 
             console.log("contract is ", contract);
 
+            // const myNFTs = [];
+
             // 返回一个数组，每个数组中的值为拥有的nft的tokenid
             const count = await contract.methods.getByOwner(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                console.log("result", result);
+                console.log("count result", result);
                 console.log("error", error);
             });
+
+            // setMyNFTs([]);
 
             count.map( async (token, index) => {
                 // 通过每个tokenId，访问合约，拿到每个tokenId的图片链接，以及power值
                 const imageUri = await contract.methods.tokenURI(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                    console.log("result", result);
-                    console.log("error", error);
+                    // console.log("imageUri result", result);
+                    // console.log("error", error);
                 });
-                console.log("imageUri is", imageUri);
+                // console.log("imageUri is", imageUri);
 
                 const power = await contract.methods.getPower(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                    console.log("result", result);
-                    console.log("error", error);
+                    // console.log("power result", result);
+                    // console.log("error", error);
                 });
-                console.log("power is", power);
+                // console.log("power is", power);
+
+                let nftObj = {
+                    imageUri: imageUri,
+                    power: power
+                };
+
+                nfts.push(nftObj);
+
+                // console.log("myNTFs is ", nfts);
+
+                setMyNFTs(nfts);
+
+                console.log("myNFTs", myNFTs);
+
             })
+
 
         }
 
@@ -69,9 +90,9 @@ export default function Nft(props) {
 
     return (
         <div className='nft'>
-            <h1 className='my_nft'>My NFTs:</h1>
+            <h1 className='my_nft_title'>My NFTs:</h1>
             <Divider />
-            <div>
+            <div className='nft_list'>
                 {
                     myNFTs.map((nft, index) => {
                         return <DisplayCard nft={nft} />

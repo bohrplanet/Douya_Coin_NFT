@@ -29,7 +29,7 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
 
     string baseURI;
     string public notRevealedUri;
-    string public baseExtension = ".json";
+    string public baseExtension = ".png";
 
     struct Prop {
         uint16 power; // power
@@ -88,8 +88,15 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
         baseURI = _newBaseURI;
     }
 
-        function _baseURI() internal view virtual override returns (string memory) {
+    function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
+    }
+
+    function setBaseExtension(string memory _newBaseExtension)
+        public
+        onlyRole(MINTER_ROLE)
+    {
+        baseExtension = _newBaseExtension;
     }
 
     function setNotRevealedURI(string memory _notRevealedURI)
@@ -173,7 +180,7 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
         return result;
     }
 
-    function getPower(uint256 tokenId) view public returns (uint256){
+    function getPower(uint256 tokenId) public view returns (uint256) {
         return props[tokenId].power;
     }
 
@@ -186,15 +193,15 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
         // detemine how many douyacoin will be dig according to power value
         uint256 power = props[tokenId].power;
 
-        uint256 random = uint256(
+        uint256 random = (uint256(
             keccak256(abi.encodePacked(block.difficulty, block.timestamp))
-        ) % 100 + 1;
+        ) % 100) + 1;
 
         uint256 amount = power * random;
 
-        _douya.mint(msg.sender, amount*10**15);
+        _douya.mint(msg.sender, amount * 10**15);
 
-        emit Dig(true, amount*10**15);
+        emit Dig(true, amount * 10**15);
     }
 
     // check allow to mining

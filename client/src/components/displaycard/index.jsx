@@ -39,7 +39,7 @@ export default function DisplayCard(props) {
             console.log("contract is ", contract);
 
             // 返回一个数组，每个数组中的值为拥有的nft的tokenid
-            const count = await contract.methods.mintDouyaNFT().send({ from: accounts[0], value:30000000000000000, gas: 1000000 }, function (error, result) {
+            const count = await contract.methods.mintDouyaNFT().send({ from: accounts[0], value: 30000000000000000, gas: 1000000 }, function (error, result) {
                 console.log("result", result);
                 console.log("error", error);
             });
@@ -53,21 +53,28 @@ export default function DisplayCard(props) {
         }
     }
 
+    async function sellOrCancel() {
+
+    }
+
     if (nft == 0) {
-        return <Card className="buy_card" title="Buy NFT" bordered={true} style={{ width: 300, height: 350 }}>
+        return <Card className="buy_card" title="Buy NFT" bordered={true} style={{ width: 300, height: 400 }}>
 
             <Button className="button" type="primary" size="large" block="true" onClick={buy_nft}>Buy</Button>
         </Card>;
     } else {
-        return <Card title={nft.id} bordered={true} style={{ width: 300, height: 350 }}>
+        return <Card title={nft.id} bordered={true} style={{ width: 300, height: 400 }}>
             <Image
-                src={nft.image}
+                src={nft.imageUri}
                 preview={false}
-                height={300}
-                width={300}
+                height={250}
+                width={250}
             />
-            <span>Power: {nft.power}</span>
-            {/* <Button type="primary" onClick={sellOrCancel}>SellOrCancel</Button> */}
+            <div className='power_div'>
+                <span className='power_value'>Power: {nft.power}</span>
+                <br />
+                <Button type="primary" onClick={sellOrCancel}>SellOrCancel</Button>
+            </div>
         </Card>
     }
 }
