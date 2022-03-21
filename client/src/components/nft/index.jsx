@@ -36,26 +36,11 @@ export default function Nft(props) {
 
             console.log("contract is ", contract);
 
+            // 返回一个数组，每个数组中的值为拥有的nft的tokenid
             const count = await contract.methods.getByOwner(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 console.log("result", result);
                 console.log("error", error);
             });
-
-            // contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-            //     if (result !== douyacoin) {
-            //         console.log("result", setDouyacoin(result));
-            //         console.log("error", error);
-            //     }
-            // });
-
-            // web3.eth.getBalance(accounts[0], function (error, result) {
-            //     if (result !== eth) {
-            //         console.log("result", setEth(result));
-            //         console.log("error", error);
-            //     }
-            // });
-
-
 
 
 
@@ -79,6 +64,8 @@ export default function Nft(props) {
                         return <DisplayCard nft={nft} />
                     })
                 }
+
+                <DisplayCard nft={0} />
             </div>
 
         </div>

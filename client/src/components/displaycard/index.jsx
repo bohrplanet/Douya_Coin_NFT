@@ -5,21 +5,27 @@ import store from '../../redux/store'
 
 export default function DisplayCard(props) {
 
-    const { nft } = props.nft;
-    const [myNFTs, setMyNFTs] = React.useState([])
+    console.log("props", props);
 
-    return (
-        <div className='card'>
-            <Card title={nft.id} bordered={true} style={{ width: 300, height: 350 }}>
-                <Image
-                    src={nft.image}
-                    preview={false}
-                    height={300}
-                    width={300}
-                />
-                <span>Power: {nft.power}</span>
-                {/* <Button type="primary" onClick={sellOrCancel}>SellOrCancel</Button> */}
-            </Card>
-        </div>
-    )
+    const nft = props.nft;
+
+    console.log("nft is", nft);
+
+    if (nft == 0) {
+        return <Card className="buy_card" title="Buy NFT" bordered={true} style={{ width: 300, height: 350 }}>
+
+            <Button className="button" type="primary" size="large" block="true">Buy</Button>
+        </Card>;
+    } else {
+        return <Card title={nft.id} bordered={true} style={{ width: 300, height: 350 }}>
+            <Image
+                src={nft.image}
+                preview={false}
+                height={300}
+                width={300}
+            />
+            <span>Power: {nft.power}</span>
+            {/* <Button type="primary" onClick={sellOrCancel}>SellOrCancel</Button> */}
+        </Card>
+    }
 }
