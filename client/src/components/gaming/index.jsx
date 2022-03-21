@@ -2,10 +2,10 @@ import React from 'react'
 import { Divider, Row, Col, Card, Input, Button } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
-import DisplayCard from '../displaycard';
+import DisplayCardForGame from '../displaycard_for_game';
 import DouyaNFT from "../../contracts/DouyaNFT.json"
 
-export default function Nft(props) {
+export default function Game(props) {
 
 
     const [myNFTs, setMyNFTs] = React.useState([])
@@ -96,11 +96,11 @@ export default function Nft(props) {
             <div className='nft_list'>
                 {
                     myNFTs.map((nft, index) => {
-                        return <DisplayCard nft={nft} />
+                        return <DisplayCardForGame nft={nft} />
                     })
                 }
 
-                <DisplayCard nft={0} />
+                <DisplayCardForGame nft={0} />
             </div>
 
         </div>

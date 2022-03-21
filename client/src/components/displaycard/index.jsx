@@ -2,7 +2,9 @@ import React from 'react'
 import { Divider, Row, Col, Card, Input, Button, Image } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
+import Market from "../../contracts/Market.json"
 import DouyaNFT from "../../contracts/DouyaNFT.json"
+
 
 export default function DisplayCard(props) {
 
@@ -54,6 +56,42 @@ export default function DisplayCard(props) {
     }
 
     async function sellOrCancel() {
+
+        let webObj = store.getState();
+
+        const { web3, accounts, contract } = webObj;
+
+        // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
+        // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
+        console.log("from redux at NFT page", webObj);
+        // console.log("accounts", accounts[0]);
+
+        if (webObj !== 0) {
+
+            // Use web3 to get the user's accounts.
+            const accounts = await web3.eth.getAccounts();
+
+            // Get the contract instance.
+            const networkId = await web3.eth.net.getId();
+            const deployedNetwork = Market.networks[networkId];
+            const contract = new web3.eth.Contract(
+                Market.abi,
+                deployedNetwork && deployedNetwork.address,
+            );
+
+            console.log("contract is ", contract);
+
+            await contract.methods.sale(nft.tokenId,"2000000000000000000").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                console.log("result", result);
+                console.log("error", error);
+            });
+
+        }
+
+        else {
+
+        }
+
 
     }
 
