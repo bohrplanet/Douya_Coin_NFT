@@ -14954,34 +14954,34 @@
     "absolutePath": "/E/Douya_Coin_NFT/contracts/Douya.sol",
     "exportedSymbols": {
       "AccessControl": [
-        1555
+        1568
       ],
       "Context": [
-        4137
+        4150
       ],
       "Douya": [
         251
       ],
       "ERC165": [
-        4438
+        4451
       ],
       "ERC20": [
-        2321
+        2334
       ],
       "IAccessControl": [
-        1628
+        1641
       ],
       "IERC165": [
-        4450
+        4463
       ],
       "IERC20": [
-        2399
+        2412
       ],
       "IERC20Metadata": [
-        2424
+        2437
       ],
       "Strings": [
-        4414
+        4427
       ]
     },
     "id": 252,
@@ -15006,7 +15006,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 252,
-        "sourceUnit": 2322,
+        "sourceUnit": 2335,
         "src": "61:55:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -15018,7 +15018,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 252,
-        "sourceUnit": 1556,
+        "sourceUnit": 1569,
         "src": "118:58:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -15031,7 +15031,7 @@
               "id": 4,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2321,
+              "referencedDeclaration": 2334,
               "src": "198:5:0"
             },
             "id": 5,
@@ -15043,7 +15043,7 @@
               "id": 6,
               "name": "AccessControl",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1555,
+              "referencedDeclaration": 1568,
               "src": "205:13:0"
             },
             "id": 7,
@@ -15058,14 +15058,14 @@
         "id": 251,
         "linearizedBaseContracts": [
           251,
-          1555,
-          4438,
-          4450,
-          1628,
-          2321,
-          2424,
-          2399,
-          4137
+          1568,
+          4451,
+          4463,
+          1641,
+          2334,
+          2437,
+          2412,
+          4150
         ],
         "name": "Douya",
         "nameLocation": "189:5:0",
@@ -15253,7 +15253,7 @@
                         "name": "DEFAULT_ADMIN_ROLE",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1274,
+                        "referencedDeclaration": 1287,
                         "src": "460:18:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -15302,7 +15302,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "449:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -15385,7 +15385,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "502:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -15504,7 +15504,7 @@
                               "name": "decimals",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1808,
+                              "referencedDeclaration": 1821,
                               "src": "582:8:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_uint8_$",
@@ -15554,7 +15554,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "548:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -15627,7 +15627,7 @@
                   "id": 22,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2321,
+                  "referencedDeclaration": 2334,
                   "src": "416:5:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -15704,7 +15704,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "691:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -15758,7 +15758,7 @@
                   "id": 57,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "658:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -15891,7 +15891,7 @@
                       "name": "_burn",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2210,
+                      "referencedDeclaration": 2223,
                       "src": "806:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -15945,7 +15945,7 @@
                   "id": 73,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "773:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -16094,7 +16094,7 @@
                       "name": "_transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2082,
+                      "referencedDeclaration": 2095,
                       "src": "951:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -16148,7 +16148,7 @@
                   "id": 91,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "918:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -16309,7 +16309,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "1080:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -16349,7 +16349,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "1049:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -16363,7 +16363,7 @@
                   "id": 106,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "1040:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -16656,7 +16656,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "1335:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -16962,7 +16962,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "1504:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -16976,7 +16976,7 @@
                   "id": 146,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "1495:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -17183,7 +17183,7 @@
                       "name": "_burn",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2210,
+                      "referencedDeclaration": 2223,
                       "src": "1737:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -17745,7 +17745,7 @@
                       "name": "transferFrom",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1933,
+                      "referencedDeclaration": 1946,
                       "src": "1972:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -17918,7 +17918,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "2078:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -17932,7 +17932,7 @@
                   "id": 228,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "2069:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -18051,7 +18051,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "2189:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -18065,7 +18065,7 @@
                   "id": 241,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "2180:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -18133,34 +18133,34 @@
     "absolutePath": "/E/Douya_Coin_NFT/contracts/Douya.sol",
     "exportedSymbols": {
       "AccessControl": [
-        1555
+        1568
       ],
       "Context": [
-        4137
+        4150
       ],
       "Douya": [
         251
       ],
       "ERC165": [
-        4438
+        4451
       ],
       "ERC20": [
-        2321
+        2334
       ],
       "IAccessControl": [
-        1628
+        1641
       ],
       "IERC165": [
-        4450
+        4463
       ],
       "IERC20": [
-        2399
+        2412
       ],
       "IERC20Metadata": [
-        2424
+        2437
       ],
       "Strings": [
-        4414
+        4427
       ]
     },
     "id": 252,
@@ -18185,7 +18185,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 252,
-        "sourceUnit": 2322,
+        "sourceUnit": 2335,
         "src": "61:55:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -18197,7 +18197,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 252,
-        "sourceUnit": 1556,
+        "sourceUnit": 1569,
         "src": "118:58:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -18210,7 +18210,7 @@
               "id": 4,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2321,
+              "referencedDeclaration": 2334,
               "src": "198:5:0"
             },
             "id": 5,
@@ -18222,7 +18222,7 @@
               "id": 6,
               "name": "AccessControl",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1555,
+              "referencedDeclaration": 1568,
               "src": "205:13:0"
             },
             "id": 7,
@@ -18237,14 +18237,14 @@
         "id": 251,
         "linearizedBaseContracts": [
           251,
-          1555,
-          4438,
-          4450,
-          1628,
-          2321,
-          2424,
-          2399,
-          4137
+          1568,
+          4451,
+          4463,
+          1641,
+          2334,
+          2437,
+          2412,
+          4150
         ],
         "name": "Douya",
         "nameLocation": "189:5:0",
@@ -18432,7 +18432,7 @@
                         "name": "DEFAULT_ADMIN_ROLE",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1274,
+                        "referencedDeclaration": 1287,
                         "src": "460:18:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -18481,7 +18481,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "449:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -18564,7 +18564,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "502:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -18683,7 +18683,7 @@
                               "name": "decimals",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1808,
+                              "referencedDeclaration": 1821,
                               "src": "582:8:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_internal_view$__$returns$_t_uint8_$",
@@ -18733,7 +18733,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "548:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -18806,7 +18806,7 @@
                   "id": 22,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 2321,
+                  "referencedDeclaration": 2334,
                   "src": "416:5:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -18883,7 +18883,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "691:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -18937,7 +18937,7 @@
                   "id": 57,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "658:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -19070,7 +19070,7 @@
                       "name": "_burn",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2210,
+                      "referencedDeclaration": 2223,
                       "src": "806:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -19124,7 +19124,7 @@
                   "id": 73,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "773:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -19273,7 +19273,7 @@
                       "name": "_transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2082,
+                      "referencedDeclaration": 2095,
                       "src": "951:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -19327,7 +19327,7 @@
                   "id": 91,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "918:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -19488,7 +19488,7 @@
                       "name": "_grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1523,
+                      "referencedDeclaration": 1536,
                       "src": "1080:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -19528,7 +19528,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "1049:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -19542,7 +19542,7 @@
                   "id": 106,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "1040:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -19835,7 +19835,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2138,
+                      "referencedDeclaration": 2151,
                       "src": "1335:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -20141,7 +20141,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "1504:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -20155,7 +20155,7 @@
                   "id": 146,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "1495:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -20362,7 +20362,7 @@
                       "name": "_burn",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2210,
+                      "referencedDeclaration": 2223,
                       "src": "1737:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -20924,7 +20924,7 @@
                       "name": "transferFrom",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1933,
+                      "referencedDeclaration": 1946,
                       "src": "1972:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -21097,7 +21097,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "2078:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -21111,7 +21111,7 @@
                   "id": 228,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "2069:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -21230,7 +21230,7 @@
                     "name": "DEFAULT_ADMIN_ROLE",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1274,
+                    "referencedDeclaration": 1287,
                     "src": "2189:18:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -21244,7 +21244,7 @@
                   "id": 241,
                   "name": "onlyRole",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 1287,
+                  "referencedDeclaration": 1300,
                   "src": "2180:8:0"
                 },
                 "nodeType": "ModifierInvocation",
@@ -21316,12 +21316,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xE6652aFBa03093124E2733d24028E99524c8f76e",
-      "transactionHash": "0xb5d4ee82fb7929ada1c1c57e452b383b4f2d03fb5ef55c1fbd9f2abc56d75791"
+      "address": "0x5874b6f6B28d71809fB09F76d61CE262Ba75A559",
+      "transactionHash": "0x0f1034e999bd5ba79a166b1af332b2dc90535e4ad1e389c5a006be22b749009f"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2022-03-21T02:45:08.434Z",
+  "updatedAt": "2022-03-21T06:23:47.833Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

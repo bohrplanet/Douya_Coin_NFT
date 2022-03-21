@@ -42,7 +42,16 @@ export default function Nft(props) {
                 console.log("error", error);
             });
 
+            count.map( async (token, index) => {
+                // 通过每个tokenId，访问合约，拿到每个tokenId的图片链接，以及power值
+                const imageUri = await contract.methods.tokenURI(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                    console.log("result", result);
+                    console.log("error", error);
+                });
+                console.log("imageUri is", imageUri);
 
+
+            })
 
         }
 

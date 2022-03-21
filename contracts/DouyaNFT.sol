@@ -173,6 +173,10 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
         return result;
     }
 
+    function getPower(uint256 tokenId) view public returns (uint256){
+        return props[tokenId].power;
+    }
+
     //mining operation
     function dig(address player, uint256 tokenId) public {
         require(ownerOf(tokenId) == player, "player and token not matched");
