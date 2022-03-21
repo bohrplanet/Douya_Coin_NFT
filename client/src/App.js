@@ -7,6 +7,7 @@ import 'antd/dist/antd.css'
 import "./App.css";
 import Home from './components/home'
 import Buy from './components/buy'
+import Nft from './components/nft'
 import Market from "./components/market";
 import About from './components/about'
 import Web3 from "web3";
@@ -156,8 +157,7 @@ class App extends Component {
             {/* 路由链接 */}
             <Menu.Item key="1"><Link to="/home">Home</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/buy">Buy</Link></Menu.Item>
-
-            <Menu.Item key="3">NFT</Menu.Item>
+            <Menu.Item key="3"><Link to="/nft">NFT</Link></Menu.Item>
             <Menu.Item key="4">Gaming</Menu.Item>
             <Menu.Item key="5"><Link to="/market">Market</Link></Menu.Item>
             <Menu.Item key="6">Staking</Menu.Item>
@@ -169,6 +169,7 @@ class App extends Component {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/buy" element={<Buy />} />
+          <Route path="/nft" element={<Nft />} />
           <Route path="/market" element={<Market />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Navigate to="/home" />} />

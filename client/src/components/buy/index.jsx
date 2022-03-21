@@ -26,7 +26,7 @@ export default function Buy(props) {
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把eth和豆芽币的值拿到，set给state
         console.log("from redux", webObj);
-        console.log("accounts", accounts[0]);
+        // console.log("accounts", accounts[0]);
 
         if (webObj !== 0) {
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
