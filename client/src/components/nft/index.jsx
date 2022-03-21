@@ -50,7 +50,11 @@ export default function Nft(props) {
                 });
                 console.log("imageUri is", imageUri);
 
-
+                const power = await contract.methods.getPower(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                    console.log("result", result);
+                    console.log("error", error);
+                });
+                console.log("power is", power);
             })
 
         }
