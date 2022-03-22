@@ -24,7 +24,7 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
     // Constants
     uint256 public constant MAX_SUPPLY = 50;
     uint256 public mintPrice = 0.03 ether;
-    uint256 public maxBalance = 2;
+    uint256 public maxBalance = 5;
     uint256 public maxMint = 1;
 
     string baseURI;
@@ -53,7 +53,6 @@ contract DouyaNFT is AccessControl, ERC721Enumerable {
     function mintDouyaNFT()
         public
         payable
-        onlyRole(MINTER_ROLE)
         returns (uint256)
     {
         require(
