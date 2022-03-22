@@ -1,11 +1,15 @@
 var Douya = artifacts.require("./Douya.sol");
 var DouyaNFT = artifacts.require("./DouyaNFT.sol");
 var Market = artifacts.require("./Market.sol");
+var TokenBank = artifacts.require("./TokenBank.sol");
 
 module.exports = async function(deployer) {
 
   await deployer.deploy(Douya)
   const douyaToken = await Douya.deployed()
+
+  await deployer.deploy(TokenBank, douyaToken.address)
+  // const tokenBank = await TokenBank.deployed()
 
   await deployer.deploy(DouyaNFT, douyaToken.address)
   const douyaNFT = await DouyaNFT.deployed()
