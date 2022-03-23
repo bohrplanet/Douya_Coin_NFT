@@ -1,8 +1,7 @@
 import React from 'react'
-import { Divider, Row, Col, Card, Input, Button, Image } from 'antd';
+import { Card, Button, Image } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
-import DouyaNFT from "../../contracts/DouyaNFT.json"
 import Market from "../../contracts/Market.json"
 
 
@@ -18,7 +17,7 @@ export default function DisplayCardForMarket(props) {
 
         let webObj = store.getState();
 
-        const { web3, accounts, contract } = webObj;
+        const { web3 } = webObj;
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
@@ -55,7 +54,7 @@ export default function DisplayCardForMarket(props) {
         }
     }
 
-    if (nft == 0) {
+    if (nft === 0) {
         return <div />;
     } else {
         return <Card title={nft.id} bordered={true} style={{ width: 300, height: 400 }}>

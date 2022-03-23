@@ -12,62 +12,64 @@ export default function Staking(props) {
   const [staking, setStaking] = React.useState(0)
   // const [reward, setReward] = React.useState(0)
   const [balance, setBalance] = React.useState(0)
-  const [loading, setLoading] = React.useState(true)
+  const [setLoading] = React.useState(true)
+
+
+  React.useEffect(() => {
+
+    async function fetchData() {
+      let webObj = store.getState();
+
+      const { web3 } = webObj;
   
-
-  React.useEffect(async () => {
-
-    let webObj = store.getState();
-
-    const { web3, accounts, contract } = webObj;
-
-    // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
-    // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-    console.log("from redux at NFT page", webObj);
-    // console.log("accounts", accounts[0]);
-
-    const nfts = []
-
-    if (webObj !== 0) {
-
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
-
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = TokenBank.networks[networkId];
-      const contract = new web3.eth.Contract(
-        TokenBank.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
-
-      const deployedNetwork_douya = Douya.networks[networkId];
-      const contract_douya = new web3.eth.Contract(
-        Douya.abi,
-        deployedNetwork_douya && deployedNetwork_douya.address,
-      );
-
-      console.log("contract is ", contract);
-
-      let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
-      });
-
-      setStaking(stakingBalance);
-
-      let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
-      });
-
-      setBalance(douyaBalance);
-
+      // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
+      // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
+      console.log("from redux at NFT page", webObj);
+      // console.log("accounts", accounts[0]);
+  
+      if (webObj !== 0) {
+  
+        // Use web3 to get the user's accounts.
+        const accounts = await web3.eth.getAccounts();
+  
+        // Get the contract instance.
+        const networkId = await web3.eth.net.getId();
+        const deployedNetwork = TokenBank.networks[networkId];
+        const contract = new web3.eth.Contract(
+          TokenBank.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
+  
+        const deployedNetwork_douya = Douya.networks[networkId];
+        const contract_douya = new web3.eth.Contract(
+          Douya.abi,
+          deployedNetwork_douya && deployedNetwork_douya.address,
+        );
+  
+        console.log("contract is ", contract);
+  
+        let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+          console.log("stakingBalance result", result);
+          console.log("error", error);
+        });
+  
+        setStaking(stakingBalance);
+  
+        let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+          console.log("stakingBalance result", result);
+          console.log("error", error);
+        });
+  
+        setBalance(douyaBalance);
+  
+      }
+  
+      else {
+  
+      }
     }
 
-    else {
-
-    }
+    fetchData();
 
     // component will unmount
     return () => { }
@@ -77,14 +79,12 @@ export default function Staking(props) {
 
     let webObj = store.getState();
 
-    const { web3, accounts, contract } = webObj;
+    const { web3 } = webObj;
 
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
     console.log("from redux at NFT page", webObj);
     // console.log("accounts", accounts[0]);
-
-    const nfts = []
 
     if (webObj !== 0) {
 
@@ -112,7 +112,7 @@ export default function Staking(props) {
       await contract_douya.methods.approve(contract._address, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
         console.log("result", result);
         console.log("error", error);
-    });
+      });
 
       await contract.methods.stakeTokens(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
         setLoading(false)
@@ -138,14 +138,12 @@ export default function Staking(props) {
 
     let webObj = store.getState();
 
-    const { web3, accounts, contract } = webObj;
+    const { web3 } = webObj;
 
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
     console.log("from redux at NFT page", webObj);
     // console.log("accounts", accounts[0]);
-
-    const nfts = []
 
     if (webObj !== 0) {
 
@@ -171,7 +169,6 @@ export default function Staking(props) {
       await contract.methods.unstakeTokens().send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
         setLoading(false)
       })
-
 
       // contract_douya.methods.approve(contract.address, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
       //   contract.methods.stakeTokens(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {

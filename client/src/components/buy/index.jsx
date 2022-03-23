@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col, Card, Input, Button } from 'antd';
 import "./index.css"
-import Web3 from 'web3';
 import store from '../../redux/store'
 
 export default function Buy(props) {
@@ -56,7 +55,7 @@ export default function Buy(props) {
 
         let webObj = store.getState();
 
-        const { web3, accounts, contract } = webObj;
+        const { accounts, contract } = webObj;
 
         console.log("x", x.current.input.value);
         contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
@@ -71,7 +70,7 @@ export default function Buy(props) {
             console.log("33333333");
             console.log(receipt);
             for (var e in receipt.events) {
-                if (e == "Sold") {
+                if (e === "Sold") {
                     console.log("兑换成功！");
                 }
             }
@@ -82,7 +81,7 @@ export default function Buy(props) {
 
         let webObj = store.getState();
 
-        const { web3, accounts, contract } = webObj;
+        const { accounts, contract } = webObj;
         
         console.log("y", y.current.input.value);
         contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
@@ -97,7 +96,7 @@ export default function Buy(props) {
             console.log("33333333");
             console.log(receipt);
             for (var e in receipt.events) {
-                if (e == "Bought") {
+                if (e === "Bought") {
                     console.log("兑换成功！");
                 }
             }

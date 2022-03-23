@@ -1,5 +1,4 @@
 import React from 'react'
-import { Row, Col, Card, Input, Button } from 'antd';
 import "./index.css"
 
 export default function About(props) {

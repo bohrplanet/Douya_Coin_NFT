@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import { Layout, Menu, Row, Col, Image } from 'antd';
+import React from 'react'
+import { Layout, Row, Col, Image } from 'antd';
 import 'antd/dist/antd.css'
 import './index.css'
 import big_pic from '../../img/big_pic.png'
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Content } = Layout;
 
 export default function Home() {
-
-    const [sum, setSum] = useState(1)
 
     return (
         <Content className="content" style={{ padding: '0 50px' }}>

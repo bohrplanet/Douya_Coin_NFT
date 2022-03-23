@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Douya from "./contracts/Douya.json";
-import getWeb3 from "./getWeb3";
 import { Layout, Menu } from 'antd';
 import { Link, Route, Routes, Navigate } from 'react-router-dom'
 import 'antd/dist/antd.css'
@@ -16,7 +15,7 @@ import Web3 from "web3";
 import store from './redux/store'
 
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer } = Layout;
 
 class App extends Component {
   state = {
@@ -66,7 +65,7 @@ class App extends Component {
   // };
 
   runExample = async () => {
-    const { accounts, contract } = this.state;
+    // const { accounts, contract } = this.state;
 
     // Stores a given value, 5 by default.
     // await contract.methods.set(5).send({ from: accounts[0] });
@@ -86,7 +85,9 @@ class App extends Component {
       web3 = new Web3(window.ethereum);
       try {
         // Request account access if needed
-        await window.ethereum.enable();
+        await window.ethereum.send(
+          "eth_requestAccounts"
+      );
         // Accounts now exposed
       } catch (error) {
       }
