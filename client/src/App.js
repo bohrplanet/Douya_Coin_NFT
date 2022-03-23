@@ -10,6 +10,7 @@ import Buy from './components/buy'
 import Nft from './components/nft'
 import Game from './components/gaming'
 import Market from "./components/market";
+import Staking from "./components/staking";
 import About from './components/about'
 import Web3 from "web3";
 import store from './redux/store'
@@ -161,7 +162,7 @@ class App extends Component {
             <Menu.Item key="3"><Link to="/nft">NFT</Link></Menu.Item>
             <Menu.Item key="4"><Link to="/game">Gaming</Link></Menu.Item>
             <Menu.Item key="5"><Link to="/market">Market</Link></Menu.Item>
-            <Menu.Item key="6">Staking</Menu.Item>
+            <Menu.Item key="6"><Link to="/staking">Staking</Link></Menu.Item>
             <Menu.Item key="7"><Link to="/about">About Douya</Link></Menu.Item>
             <Menu.Item key="8" onClick={this.connectToWallet}>Connect</Menu.Item>
           </Menu>
@@ -173,6 +174,7 @@ class App extends Component {
           <Route path="/nft" element={<Nft />} />
           <Route path="/game" element={<Game />} />
           <Route path="/market" element={<Market />} />
+          <Route path="/staking" element={<Staking />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
