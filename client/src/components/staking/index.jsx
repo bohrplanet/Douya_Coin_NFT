@@ -1,7 +1,7 @@
 import React from 'react'
 import store from '../../redux/store'
 import Market_contract from "../../contracts/Market.json"
-import { Card } from 'antd';
+import { Card, Input, Button } from 'antd';
 import "./index.css"
 
 export default function Staking(props) {
@@ -61,19 +61,19 @@ export default function Staking(props) {
       <div className='staking_main'>
         <Card className='staking_left' bordered={false} style={{ width: 500 }}>
           <p>Staking Balance</p>
-          <p>DOU</p>
+          <p>{ }DOU</p>
         </Card>
         <Card className='staking_right' bordered={false} style={{ width: 500 }}>
           <p>Reward Balance</p>
-          <p>DOU</p>
+          <p>{ }DOU</p>
         </Card>
       </div>
       <div className='content'>
         <Card className='staking_content' style={{ width: 1000 }}>
-          <p>Stake Tokens</p>
-          <p>DOU</p>
-          <p>STAKE!</p>
-          <p>UN-STAKE...</p>
+          <p className='tokens'><span>Stake Tokens</span><span style={{ float: "right" }}>Blance:{ }</span></p>
+          <Input className='stake_input' size='large' addonAfter="DOU" placeholder='Input DOU mount' />
+          <Button className='stake_button' size='large' type='primary' block>STAKE!</Button>
+          <Button className='stake_unstake' >UN-STAKE...</Button>
         </Card>
       </div>
     </div>

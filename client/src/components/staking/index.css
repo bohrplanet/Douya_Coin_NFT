@@ -28,3 +28,19 @@
     font-weight: 700;
     font-size: 20px;
 }
+
+.tokens {
+    text-align: left;
+}
+
+.stake_input {
+    margin-top: 10px;
+}
+
+.stake_button {
+    margin-top: 20px;
+}
+
+.stake_unstake {
+    margin-top: 25px;
+}
