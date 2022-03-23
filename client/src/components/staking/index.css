@@ -11,6 +11,10 @@
     font-size: 20px;
 }
 
+.staking_left p {
+    margin: 10px;
+}
+
 .staking_right {
     text-align: center;
     font-weight: 700;
