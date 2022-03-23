@@ -18,6 +18,8 @@ export default function Buy(props) {
 
     React.useEffect(() => {
 
+        console.log("useEffect method invoked!");
+
         let webObj = store.getState();
 
         const { web3, accounts, contract } = webObj;
@@ -49,13 +51,15 @@ export default function Buy(props) {
 
         // component will unmount
         return () => { }
-    }, [eth, douyacoin])
+    })
 
     function withdraw() {
 
         let webObj = store.getState();
 
         const { accounts, contract } = webObj;
+
+        const douya_new = x.current.input.value;
 
         console.log("x", x.current.input.value);
         contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
@@ -64,14 +68,16 @@ export default function Buy(props) {
             console.log("1111111");
             console.log(hash);
         }).on('confirmation', function (confirmationNumber, receipt) {
-            console.log("2222222");
-            console.log(receipt);
+            // console.log("2222222");
+            // console.log(receipt);
         }).on('receipt', function (receipt) {
             console.log("33333333");
             console.log(receipt);
             for (var e in receipt.events) {
                 if (e === "Sold") {
                     console.log("兑换成功！");
+                    setEth(eth + douya_new);
+                    setDouyacoin(douyacoin-douya_new);
                 }
             }
         }).on('error', console.error);
@@ -82,6 +88,8 @@ export default function Buy(props) {
         let webObj = store.getState();
 
         const { accounts, contract } = webObj;
+
+        const eth_new = y.current.input.value;
         
         console.log("y", y.current.input.value);
         contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
@@ -90,14 +98,16 @@ export default function Buy(props) {
             console.log("1111111");
             console.log(hash);
         }).on('confirmation', function (confirmationNumber, receipt) {
-            console.log("2222222");
-            console.log(receipt);
+            // console.log("2222222");
+            // console.log(receipt);
         }).on('receipt', function (receipt) {
             console.log("33333333");
             console.log(receipt);
             for (var e in receipt.events) {
                 if (e === "Bought") {
                     console.log("兑换成功！");
+                    setEth(eth - eth_new);
+                    setDouyacoin(douyacoin + eth_new);
                 }
             }
         }).on('error', console.error);
