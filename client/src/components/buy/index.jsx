@@ -32,15 +32,17 @@ export default function Buy(props) {
         if (webObj !== 0) {
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
-                    console.log("result", setDouyacoin(result));
-                    console.log("error", error);
+                    setDouyacoin(result)
+                    // console.log("result", setDouyacoin(result));
+                    // console.log("error", error);
                 }
             });
 
             web3.eth.getBalance(accounts[0], function (error, result) {
                 if (result !== eth) {
-                    console.log("result", setEth(result));
-                    console.log("error", error);
+                    setEth(result);
+                    // console.log("result", setEth(result));
+                    // console.log("error", error);
                 }
             });
         }
@@ -51,7 +53,7 @@ export default function Buy(props) {
 
         // component will unmount
         return () => { }
-    })
+    }, [])
 
     async function withdraw() {
 
@@ -80,8 +82,8 @@ export default function Buy(props) {
 
         const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
             if (result !== douyacoin) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             }
         });
 
@@ -91,8 +93,9 @@ export default function Buy(props) {
 
         web3.eth.getBalance(accounts[0], function (error, result) {
             if (result !== eth) {
-                console.log("result", setEth(result));
-                console.log("error", error);
+                setEth(result);
+                // console.log("result", setEth(result));
+                // console.log("error", error);
             }
         });
     }
@@ -108,13 +111,13 @@ export default function Buy(props) {
             console.log("交易已经发出,等待钱包响应");
         }).on('transactionHash', function (hash) {
             console.log("1111111");
-            console.log(hash);
+            // console.log(hash);
         }).on('confirmation', function (confirmationNumber, receipt) {
             // console.log("2222222");
             // console.log(receipt);
         }).on('receipt', function (receipt) {
             console.log("33333333");
-            console.log(receipt);
+            // console.log(receipt);
             for (var e in receipt.events) {
                 if (e === "Bought") {
                     console.log("兑换成功！");
@@ -124,19 +127,20 @@ export default function Buy(props) {
 
         const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
             if (result !== douyacoin) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             }
         });
 
-        console.log("aaa", aaa);
+        // console.log("aaa", aaa);
 
         setDouyacoin(aaa);
 
         web3.eth.getBalance(accounts[0], function (error, result) {
             if (result !== eth) {
-                console.log("result", setEth(result));
-                console.log("error", error);
+                setEth(result);
+                // console.log("result", setEth(result));
+                // console.log("error", error);
             }
         });
     }
