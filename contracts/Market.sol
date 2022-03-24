@@ -68,6 +68,11 @@ contract Market is Ownable{
         return result;
     }
 
+    function getPrice(uint _tokenId) external view returns(uint price) {
+
+        return shop[_tokenId].price;
+    }
+
     function setMinPrice(uint _value)public onlyOwner{
         minPrice = _value;
     }

@@ -19,3 +19,12 @@
 .power_div {
     text-align: center;
 }
+
+.price_value {
+    font-size: 30px;
+    text-align: center;
+}
+
+.button {
+    margin-top: 20px;
+}

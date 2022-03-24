@@ -57,7 +57,7 @@ export default function DisplayCardForMarket(props) {
     if (nft === 0) {
         return <div />;
     } else {
-        return <Card title={nft.id} bordered={true} style={{ width: 300, height: 400 }}>
+        return <Card title={nft.id} bordered={true} style={{ width: 300, height: 450 }}>
             <Image
                 src={nft.imageUri}
                 preview={false}
@@ -67,7 +67,9 @@ export default function DisplayCardForMarket(props) {
             <div className='power_div'>
                 <span className='power_value'>Power: {nft.power}</span>
                 <br />
-                <Button type="primary" onClick={buy}>Buy</Button>
+                <span className='price_value'>Price: {nft.price / (10**18)} DOU</span>
+                <br />
+                <Button className='button' type="primary" onClick={buy}>Buy</Button>
             </div>
         </Card>
     }

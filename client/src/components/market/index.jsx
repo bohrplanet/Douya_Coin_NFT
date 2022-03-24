@@ -72,11 +72,19 @@ export default function Market(props) {
                             // console.log("error", error);
                         });
                         // console.log("power is", power);
+
+                        const price = await contract.methods.getPrice(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                            console.log("count result", result);
+                            console.log("error", error);
+                        });
+            
+                        console.log("shop count is ", count);
     
                         let nftObj = {
                             imageUri: imageUri,
                             power: power,
-                            tokenId: token
+                            tokenId: token,
+                            price: price
                         };
     
                         await nfts.push(nftObj);

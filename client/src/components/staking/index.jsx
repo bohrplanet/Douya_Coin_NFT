@@ -12,7 +12,7 @@ export default function Staking(props) {
   const [staking, setStaking] = React.useState(0)
   // const [reward, setReward] = React.useState(0)
   const [balance, setBalance] = React.useState(0)
-  const [setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(true)
 
 
   React.useEffect(() => {
