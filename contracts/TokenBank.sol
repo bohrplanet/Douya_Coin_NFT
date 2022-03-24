@@ -70,7 +70,7 @@ contract TokenBank {
             address recipient = stakers[i];
             uint256 balance = stakingBalance[recipient];
             if (balance > 0) {
-                douya.transfer(recipient, balance);
+                douya.transfer(recipient, balance / 10);
             }
         }
     }
