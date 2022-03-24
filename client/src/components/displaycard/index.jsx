@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Image } from 'antd';
+import { Card, Button, Image, Input } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
 import Market from "../../contracts/Market.json"
@@ -13,6 +13,8 @@ export default function DisplayCard(props) {
     const nft = props.nft;
 
     console.log("nft is", nft);
+
+    let x = React.useRef();
 
     async function buy_nft() {
 
@@ -55,7 +57,7 @@ export default function DisplayCard(props) {
         }
     }
 
-    async function sellOrCancel() {
+    async function sell() {
 
         let webObj = store.getState();
 
@@ -81,7 +83,46 @@ export default function DisplayCard(props) {
 
             console.log("contract is ", contract);
 
-            await contract.methods.sale(nft.tokenId,"2000000000000000000").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+            await contract.methods.sale(nft.tokenId, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                console.log("result", result);
+                console.log("error", error);
+            });
+
+        }
+
+        else {
+
+        }
+
+    }
+
+    async function cancel() {
+
+        let webObj = store.getState();
+
+        const { web3, accounts } = webObj;
+
+        // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
+        // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
+        console.log("from redux at NFT page", webObj);
+        // console.log("accounts", accounts[0]);
+
+        if (accounts && accounts.length !== 0) {
+
+            // Use web3 to get the user's accounts.
+            const accounts = await web3.eth.getAccounts();
+
+            // Get the contract instance.
+            const networkId = await web3.eth.net.getId();
+            const deployedNetwork = Market.networks[networkId];
+            const contract = new web3.eth.Contract(
+                Market.abi,
+                deployedNetwork && deployedNetwork.address,
+            );
+
+            console.log("contract is ", contract);
+
+            await contract.methods.cancel(nft.tokenId).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 console.log("result", result);
                 console.log("error", error);
             });
@@ -110,7 +151,9 @@ export default function DisplayCard(props) {
             <div className='power_div'>
                 <span className='power_value'>Power: {nft.power}</span>
                 <br />
-                <Button type="primary" onClick={sellOrCancel}>SellOrCancel</Button>
+                <Input ref={x} style={{ width: '100px' }} placeholder="sell price" />
+                <Button type="primary" onClick={sell}>Sell</Button>
+                <Button type="primary" onClick={cancel} danger> Cancel</Button>
             </div>
         </Card>
     }

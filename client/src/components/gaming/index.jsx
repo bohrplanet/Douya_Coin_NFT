@@ -73,7 +73,7 @@ export default function Game(props) {
     
                     // console.log("myNTFs is ", nfts);
     
-                    setMyNFTs(nfts);
+                    await setMyNFTs(nfts);
     
                     console.log("myNFTs", myNFTs);
     
