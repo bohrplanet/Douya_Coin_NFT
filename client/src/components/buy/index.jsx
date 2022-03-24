@@ -29,7 +29,7 @@ export default function Buy(props) {
         console.log("from redux", webObj);
         console.log("accounts", accounts);
         if (accounts) {
-            console.log("accouts length", accounts.length);
+            console.log("accounts length", accounts.length);
         }
 
         if (accounts && accounts.length !== 0) {

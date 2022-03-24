@@ -32,7 +32,87 @@ class App extends Component {
   };
 
   componentDidMount = async () => {
-    
+
+    window.addEventListener("load", async () => {
+
+      window.ethereum.on('accountsChanged', async (accounts) => {
+
+        console.log("accountsChanged invoked!");
+
+        // if (window.ethereum) {
+        //   web3 = new Web3(window.ethereum);
+        //   try {
+        //     // Request account access if needed
+        //     await window.ethereum.send(
+        //       "eth_requestAccounts"
+        //     );
+        //     // Accounts now exposed
+        //   } catch (error) {
+        //   }
+        // }
+        // // Legacy dapp browsers...
+        // else if (window.web3) {
+        //   // Use Mist/MetaMask's provider.
+        //   web3 = window.web3;
+        //   console.log("Injected web3 detected.");
+        // }
+        // // Fallback to localhost; use dev console port by default...
+        // else {
+        //   const provider = new Web3.providers.HttpProvider(
+        //     "http://127.0.0.1:8545"
+        //   );
+        //   web3 = new Web3(provider);
+        //   console.log("No web3 instance injected, using Local web3.");
+        // }
+        // console.log("getweb3", web3);
+
+        // this.setState({ web3 });
+
+        // if (web3) {
+        //   // Use web3 to get the user's accounts.
+        //   const accounts = await web3.eth.getAccounts();
+
+        //   // Get the contract instance.
+        //   const networkId = await web3.eth.net.getId();
+        //   const deployedNetwork = Douya.networks[networkId];
+        //   const instance = new web3.eth.Contract(
+        //     Douya.abi,
+        //     deployedNetwork && deployedNetwork.address,
+        //   );
+
+        //   // console.log("accounts is", accounts);
+        //   // console.log("networkId is", networkId);
+        //   // console.log("deployedNetwork is", deployedNetwork);
+        //   // console.log("instance is ", instance);
+
+        //   // Set web3, accounts, and contract to the state, and then proceed with an
+        //   // example of interacting with the contract's methods.
+        //   this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
+
+        //   console.log("connectWallet", web3);
+
+        //   let web3Obj = {
+        //     web3: web3,
+        //     accounts: accounts,
+        //     contract: instance
+        //   }
+
+        //   // 在这里，将web3等相关的对象交给redux管理
+        //   const action = { type: 'increment', data: web3Obj };
+
+        //   store.dispatch(action);
+
+        // }
+
+        console.log("ready to reload!");
+
+        window.location.reload();
+
+      });
+
+
+    });
+
     // Get network provider and web3 instance.
     // Modern dapp browsers...
     let web3 = null;
@@ -42,7 +122,8 @@ class App extends Component {
         // Request account access if needed
         await window.ethereum.send(
           "eth_requestAccounts"
-      );
+        );
+
         // Accounts now exposed
       } catch (error) {
       }
@@ -95,7 +176,7 @@ class App extends Component {
       }
 
       // 在这里，将web3等相关的对象交给redux管理
-      const action = {type: 'increment', data: web3Obj};
+      const action = { type: 'increment', data: web3Obj };
 
       store.dispatch(action);
 
@@ -126,7 +207,7 @@ class App extends Component {
         // Request account access if needed
         await window.ethereum.send(
           "eth_requestAccounts"
-      );
+        );
         // Accounts now exposed
       } catch (error) {
       }
@@ -179,7 +260,7 @@ class App extends Component {
       }
 
       // 在这里，将web3等相关的对象交给redux管理
-      const action = {type: 'increment', data: web3Obj};
+      const action = { type: 'increment', data: web3Obj };
 
       store.dispatch(action);
 
