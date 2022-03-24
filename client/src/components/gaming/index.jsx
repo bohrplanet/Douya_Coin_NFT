@@ -69,7 +69,7 @@ export default function Game(props) {
                         tokenId: token
                     };
     
-                    nfts.push(nftObj);
+                    await nfts.push(nftObj);
     
                     // console.log("myNTFs is ", nfts);
     

@@ -54,13 +54,13 @@ export default function Nft(props) {
                 count.map(async (token, index) => {
                     // 通过每个tokenId，访问合约，拿到每个tokenId的图片链接，以及power值
                     const imageUri = await contract.methods.tokenURI(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                        // console.log("imageUri result", result);
+                        console.log("imageUri result", result);
                         // console.log("error", error);
                     });
                     // console.log("imageUri is", imageUri);
 
                     const power = await contract.methods.getPower(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                        // console.log("power result", result);
+                        console.log("power result", result);
                         // console.log("error", error);
                     });
                     // console.log("power is", power);
@@ -71,11 +71,11 @@ export default function Nft(props) {
                         tokenId: token
                     };
 
-                    nfts.push(nftObj);
+                    await nfts.push(nftObj);
 
                     // console.log("myNTFs is ", nfts);
 
-                    setMyNFTs(nfts);
+                    await setMyNFTs(nfts);
 
                     console.log("myNFTs", myNFTs);
 
@@ -93,6 +93,8 @@ export default function Nft(props) {
         // component will unmount
         return () => { }
     }, [])
+
+    console.log("before return myNFTs", myNFTs);
 
     return (
         <div className='nft'>
