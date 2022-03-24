@@ -27,9 +27,12 @@ export default function Buy(props) {
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把eth和豆芽币的值拿到，set给state
         console.log("from redux", webObj);
-        // console.log("accounts", accounts[0]);
+        console.log("accounts", accounts);
+        if (accounts) {
+            console.log("accouts length", accounts.length);
+        }
 
-        if (webObj !== 0) {
+        if (accounts && accounts.length !== 0) {
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
                     setDouyacoin(result)
@@ -61,43 +64,46 @@ export default function Buy(props) {
 
         const { web3, accounts, contract } = webObj;
 
-        console.log("x", x.current.input.value);
-        await contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-            console.log("交易已经发出,等待钱包响应");
-        }).on('transactionHash', function (hash) {
-            console.log("1111111");
-            console.log(hash);
-        }).on('confirmation', function (confirmationNumber, receipt) {
-            // console.log("2222222");
-            // console.log(receipt);
-        }).on('receipt', function (receipt) {
-            console.log("33333333");
-            console.log(receipt);
-            for (var e in receipt.events) {
-                if (e === "Sold") {
-                    console.log("兑换成功！");
+        if (accounts && accounts.length !== 0) {
+
+            console.log("x", x.current.input.value);
+            await contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                console.log("交易已经发出,等待钱包响应");
+            }).on('transactionHash', function (hash) {
+                console.log("1111111");
+                console.log(hash);
+            }).on('confirmation', function (confirmationNumber, receipt) {
+                // console.log("2222222");
+                // console.log(receipt);
+            }).on('receipt', function (receipt) {
+                console.log("33333333");
+                console.log(receipt);
+                for (var e in receipt.events) {
+                    if (e === "Sold") {
+                        console.log("兑换成功！");
+                    }
                 }
-            }
-        }).on('error', console.error);
+            }).on('error', console.error);
 
-        const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-            if (result !== douyacoin) {
-                // console.log("result", result);
-                // console.log("error", error);
-            }
-        });
+            const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                if (result !== douyacoin) {
+                    // console.log("result", result);
+                    // console.log("error", error);
+                }
+            });
 
-        console.log("aaa", aaa);
+            console.log("aaa", aaa);
 
-        setDouyacoin(aaa);
+            setDouyacoin(aaa);
 
-        web3.eth.getBalance(accounts[0], function (error, result) {
-            if (result !== eth) {
-                setEth(result);
-                // console.log("result", setEth(result));
-                // console.log("error", error);
-            }
-        });
+            web3.eth.getBalance(accounts[0], function (error, result) {
+                if (result !== eth) {
+                    setEth(result);
+                    // console.log("result", setEth(result));
+                    // console.log("error", error);
+                }
+            });
+        }
     }
 
     async function deposit() {
@@ -105,44 +111,48 @@ export default function Buy(props) {
         let webObj = store.getState();
 
         const { web3, accounts, contract } = webObj;
-        
-        console.log("y", y.current.input.value);
-        await contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
-            console.log("交易已经发出,等待钱包响应");
-        }).on('transactionHash', function (hash) {
-            console.log("1111111");
-            // console.log(hash);
-        }).on('confirmation', function (confirmationNumber, receipt) {
-            // console.log("2222222");
-            // console.log(receipt);
-        }).on('receipt', function (receipt) {
-            console.log("33333333");
-            // console.log(receipt);
-            for (var e in receipt.events) {
-                if (e === "Bought") {
-                    console.log("兑换成功！");
+
+        if (accounts && accounts.length !== 0) {
+
+            console.log("y", y.current.input.value);
+            await contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
+                console.log("交易已经发出,等待钱包响应");
+            }).on('transactionHash', function (hash) {
+                console.log("1111111");
+                // console.log(hash);
+            }).on('confirmation', function (confirmationNumber, receipt) {
+                // console.log("2222222");
+                // console.log(receipt);
+            }).on('receipt', function (receipt) {
+                console.log("33333333");
+                // console.log(receipt);
+                for (var e in receipt.events) {
+                    if (e === "Bought") {
+                        console.log("兑换成功！");
+                    }
                 }
-            }
-        }).on('error', console.error);
+            }).on('error', console.error);
 
-        const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-            if (result !== douyacoin) {
-                // console.log("result", result);
-                // console.log("error", error);
-            }
-        });
+            const aaa = await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+                if (result !== douyacoin) {
+                    // console.log("result", result);
+                    // console.log("error", error);
+                }
+            });
 
-        // console.log("aaa", aaa);
+            // console.log("aaa", aaa);
 
-        setDouyacoin(aaa);
+            setDouyacoin(aaa);
 
-        web3.eth.getBalance(accounts[0], function (error, result) {
-            if (result !== eth) {
-                setEth(result);
-                // console.log("result", setEth(result));
-                // console.log("error", error);
-            }
-        });
+            web3.eth.getBalance(accounts[0], function (error, result) {
+                if (result !== eth) {
+                    setEth(result);
+                    // console.log("result", setEth(result));
+                    // console.log("error", error);
+                }
+            });
+
+        }
     }
 
     return (
