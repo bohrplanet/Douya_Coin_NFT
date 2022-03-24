@@ -21,17 +21,17 @@ export default function Staking(props) {
       let webObj = store.getState();
 
       const { web3, accounts } = webObj;
-  
+
       // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
       // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
       console.log("from redux at NFT page", webObj);
       // console.log("accounts", accounts[0]);
-  
+
       if (accounts && accounts.length !== 0) {
-  
+
         // Use web3 to get the user's accounts.
         const accounts = await web3.eth.getAccounts();
-  
+
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = TokenBank.networks[networkId];
@@ -39,33 +39,33 @@ export default function Staking(props) {
           TokenBank.abi,
           deployedNetwork && deployedNetwork.address,
         );
-  
+
         const deployedNetwork_douya = Douya.networks[networkId];
         const contract_douya = new web3.eth.Contract(
           Douya.abi,
           deployedNetwork_douya && deployedNetwork_douya.address,
         );
-  
+
         console.log("contract is ", contract);
-  
+
         let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
           console.log("stakingBalance result", result);
           console.log("error", error);
         });
-  
+
         setStaking(stakingBalance);
-  
+
         let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
           console.log("stakingBalance result", result);
           console.log("error", error);
         });
-  
+
         setBalance(douyaBalance);
-  
+
       }
-  
+
       else {
-  
+
       }
     }
 
@@ -118,12 +118,20 @@ export default function Staking(props) {
         setLoading(false)
       })
 
+      // update page balance
+      let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+        console.log("stakingBalance result", result);
+        console.log("error", error);
+      });
 
-      // contract_douya.methods.approve(contract.address, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
-      //   contract.methods.stakeTokens(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
-      //     setLoading(false)
-      //   })
-      // })
+      setBalance(douyaBalance);
+
+      let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+        console.log("stakingBalance result", result);
+        console.log("error", error);
+      });
+
+      setStaking(stakingBalance);
 
     }
 
@@ -169,12 +177,21 @@ export default function Staking(props) {
       await contract.methods.unstakeTokens().send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
         setLoading(false)
       })
+      
+      // update page balance
+      let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+        console.log("stakingBalance result", result);
+        console.log("error", error);
+      });
 
-      // contract_douya.methods.approve(contract.address, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
-      //   contract.methods.stakeTokens(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
-      //     setLoading(false)
-      //   })
-      // })
+      setBalance(douyaBalance);
+
+      let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
+        console.log("stakingBalance result", result);
+        console.log("error", error);
+      });
+
+      setStaking(stakingBalance);
 
     }
 
@@ -197,7 +214,7 @@ export default function Staking(props) {
         </Card> */}
       </div>
       <div className='content'>
-        <Card className='staking_content' style={{ width: 1000 }}>
+        <Card className='staking_content' bordered={false} style={{ width: 1000 }}>
           <p className='tokens'><span>Stake Tokens</span><span style={{ float: "right" }}>Balance: {balance / (10 ** 18)}</span></p>
           <Input className='stake_input' ref={x} size='large' addonAfter="DOU" placeholder='Input DOU mount' />
           <Button className='stake_button' size='large' type='primary' block onClick={stake}>STAKE!</Button>
