@@ -92,7 +92,6 @@ export default function DisplayCard(props) {
 
         }
 
-
     }
 
     if (nft === 0) {

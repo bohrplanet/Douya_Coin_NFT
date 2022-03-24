@@ -90,7 +90,7 @@ export default function Nft(props) {
 
         // component will unmount
         return () => { }
-    }, [myNFTs])
+    }, [])
 
     return (
         <div className='nft'>

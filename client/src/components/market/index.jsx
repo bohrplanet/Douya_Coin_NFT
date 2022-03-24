@@ -100,7 +100,7 @@ export default function Market(props) {
 
         // component will unmount
         return () => { }
-    }, [myNFTs])
+    }, [])
 
     return (
         <div className='nft'>

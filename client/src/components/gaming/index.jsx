@@ -91,7 +91,7 @@ export default function Game(props) {
 
         // component will unmount
         return () => { }
-    }, [myNFTs])
+    }, [])
 
     return (
         <div className='nft'>
