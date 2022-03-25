@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Input, Button } from 'antd';
+import { Row, Col, Card, Input, Button, message } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
 
@@ -64,6 +64,14 @@ export default function Buy(props) {
 
         const { web3, accounts, contract } = webObj;
 
+        if (accounts === null || accounts.length === 0) {
+            return message.info('Connect wallet first please.');
+        }
+
+        if (web3.eth.net.getId() !== 3) {
+            return message.info('Change network to Ropsten Test Network.');
+        }
+
         if (accounts && accounts.length !== 0) {
 
             console.log("x", x.current.input.value);
@@ -111,6 +119,14 @@ export default function Buy(props) {
         let webObj = store.getState();
 
         const { web3, accounts, contract } = webObj;
+
+        if (accounts === null || accounts.length === 0) {
+            return message.info('Connect wallet first please.');
+        }
+
+        if (web3.eth.net.getId() !== 3) {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         if (accounts && accounts.length !== 0) {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Image } from 'antd';
+import { Card, Button, Image, message } from 'antd';
 import "./index.css"
 import store from '../../redux/store'
 import DouyaNFT from "../../contracts/DouyaNFT.json"
@@ -18,6 +18,14 @@ export default function DisplayCardForGame(props) {
         let webObj = store.getState();
 
         const { web3, accounts } = webObj;
+
+        if (accounts === null || accounts.length === 0) {
+            return message.info('Connect wallet first please.');
+        }
+
+        if (web3.eth.net.getId() !== 3) {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state

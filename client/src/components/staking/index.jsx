@@ -2,7 +2,7 @@ import React from 'react'
 import store from '../../redux/store'
 import TokenBank from "../../contracts/TokenBank.json"
 import Douya from "../../contracts/Douya.json"
-import { Card, Input, Button } from 'antd';
+import { Card, Input, Button, message } from 'antd';
 import "./index.css"
 
 export default function Staking(props) {
@@ -81,6 +81,14 @@ export default function Staking(props) {
 
     const { web3, accounts } = webObj;
 
+    if (accounts === null || accounts.length === 0) {
+      return message.info('Connect wallet first please.');
+    }
+
+    if (web3.eth.net.getId() !== 3) {
+      return message.info('Change network to Ropsten Test Network.');
+    }
+
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
     console.log("from redux at NFT page", webObj);
@@ -148,6 +156,14 @@ export default function Staking(props) {
 
     const { web3, accounts } = webObj;
 
+    if (accounts === null || accounts.length === 0) {
+      return message.info('Connect wallet first please.');
+    }
+
+    if (web3.eth.net.getId() !== 3) {
+      return message.info('Change network to Ropsten Test Network.');
+    }
+
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
     console.log("from redux at NFT page", webObj);
@@ -177,7 +193,7 @@ export default function Staking(props) {
       await contract.methods.unstakeTokens().send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
         setLoading(false)
       })
-      
+
       // update page balance
       let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
         console.log("stakingBalance result", result);
