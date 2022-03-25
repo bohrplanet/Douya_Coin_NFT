@@ -8,11 +8,11 @@ import DouyaNFT from "../../contracts/DouyaNFT.json"
 
 export default function DisplayCard(props) {
 
-    console.log("props", props);
+    // console.log("props", props);
 
     const nft = props.nft;
 
-    console.log("nft is", nft);
+    // console.log("nft is", nft);
 
     let x = React.useRef();
 
@@ -32,7 +32,7 @@ export default function DisplayCard(props) {
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-        console.log("from redux at NFT page", webObj);
+        // console.log("from redux at NFT page", webObj);
         // console.log("accounts", accounts[0]);
 
         if (accounts && accounts.length !== 0) {
@@ -48,15 +48,15 @@ export default function DisplayCard(props) {
                 deployedNetwork && deployedNetwork.address,
             );
 
-            console.log("contract is ", contract);
+            // console.log("contract is ", contract);
 
             // 返回一个数组，每个数组中的值为拥有的nft的tokenid
             const count = await contract.methods.mintDouyaNFT().send({ from: accounts[0], value: 30000000000000000, gas: 1000000 }, function (error, result) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             });
 
-            console.log("count is", count);
+            // console.log("count is", count);
 
         }
 
@@ -81,7 +81,7 @@ export default function DisplayCard(props) {
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-        console.log("from redux at NFT page", webObj);
+        // console.log("from redux at NFT page", webObj);
         // console.log("accounts", accounts[0]);
 
         if (accounts && accounts.length !== 0) {
@@ -97,11 +97,11 @@ export default function DisplayCard(props) {
                 deployedNetwork && deployedNetwork.address,
             );
 
-            console.log("contract is ", contract);
+            // console.log("contract is ", contract);
 
             await contract.methods.sale(nft.tokenId, web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             });
 
         }
@@ -128,7 +128,7 @@ export default function DisplayCard(props) {
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-        console.log("from redux at NFT page", webObj);
+        // console.log("from redux at NFT page", webObj);
         // console.log("accounts", accounts[0]);
 
         if (accounts && accounts.length !== 0) {
@@ -144,11 +144,11 @@ export default function DisplayCard(props) {
                 deployedNetwork && deployedNetwork.address,
             );
 
-            console.log("contract is ", contract);
+            // console.log("contract is ", contract);
 
             await contract.methods.cancel(nft.tokenId).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             });
 
         }

@@ -41,9 +41,9 @@ class App extends Component {
 
       window.ethereum.on('accountsChanged', async (accounts) => {
 
-        console.log("accountsChanged invoked!");
+        // console.log("accountsChanged invoked!");
 
-        console.log("ready to reload!");
+        // console.log("ready to reload!");
 
         window.location.reload();
 
@@ -51,7 +51,7 @@ class App extends Component {
 
       window.ethereum.on('chainChanged', (chainId) => {
 
-        console.log("chainChanged!");
+        // console.log("chainChanged!");
         // Handle the new chain.
         // Correctly handling chain changes can be complicated.
         // We recommend reloading the page unless you have good reason not to.
@@ -75,7 +75,7 @@ class App extends Component {
     else if (window.web3) {
       // Use Mist/MetaMask's provider.
       web3 = window.web3;
-      console.log("Injected web3 detected.");
+      // console.log("Injected web3 detected.");
     }
     // Fallback to localhost; use dev console port by default...
     else {
@@ -83,9 +83,9 @@ class App extends Component {
         "http://127.0.0.1:8545"
       );
       web3 = new Web3(provider);
-      console.log("No web3 instance injected, using Local web3.");
+      // console.log("No web3 instance injected, using Local web3.");
     }
-    console.log("getweb3", web3);
+    // console.log("getweb3", web3);
 
     this.setState({ web3 });
 
@@ -120,7 +120,7 @@ class App extends Component {
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
 
-      console.log("connectWallet", web3);
+      // console.log("connectWallet", web3);
 
       let web3Obj = {
         web3: web3,
@@ -141,9 +141,9 @@ class App extends Component {
 
     //     window.ethereum.on('accountsChanged', async (accounts) => {
 
-    //       console.log("accountsChanged invoked!");
+    //       // console.log("accountsChanged invoked!");
 
-    //       console.log("ready to reload!");
+    //       // console.log("ready to reload!");
 
     //       window.location.reload();
 
@@ -151,7 +151,7 @@ class App extends Component {
 
     //     window.ethereum.on('chainChanged', (chainId) => {
 
-    //       console.log("chainChanged!");
+    //       // console.log("chainChanged!");
     //       // Handle the new chain.
     //       // Correctly handling chain changes can be complicated.
     //       // We recommend reloading the page unless you have good reason not to.
@@ -195,7 +195,7 @@ class App extends Component {
     else if (window.web3) {
       // Use Mist/MetaMask's provider.
       web3 = window.web3;
-      console.log("Injected web3 detected.");
+      // console.log("Injected web3 detected.");
     }
     // Fallback to localhost; use dev console port by default...
     else {
@@ -203,9 +203,9 @@ class App extends Component {
         "http://127.0.0.1:8545"
       );
       web3 = new Web3(provider);
-      console.log("No web3 instance injected, using Local web3.");
+      // console.log("No web3 instance injected, using Local web3.");
     }
-    console.log("getweb3", web3);
+    // console.log("getweb3", web3);
 
     this.setState({ web3 });
 
@@ -230,7 +230,7 @@ class App extends Component {
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance, chainId: networkId }, this.getTopic);
 
-      console.log("connectWallet", web3);
+      // console.log("connectWallet", web3);
 
       let web3Obj = {
         web3: web3,

@@ -24,7 +24,7 @@ export default function Staking(props) {
 
       // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
       // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-      console.log("from redux at NFT page", webObj);
+      // console.log("from redux at NFT page", webObj);
       // console.log("accounts", accounts[0]);
 
       // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
@@ -47,18 +47,18 @@ export default function Staking(props) {
           deployedNetwork_douya && deployedNetwork_douya.address,
         );
 
-        console.log("contract is ", contract);
+        // console.log("contract is ", contract);
 
         let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-          console.log("stakingBalance result", result);
-          console.log("error", error);
+          // console.log("stakingBalance result", result);
+          // console.log("error", error);
         });
 
         setStaking(stakingBalance);
 
         let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-          console.log("stakingBalance result", result);
-          console.log("error", error);
+          // console.log("stakingBalance result", result);
+          // console.log("error", error);
         });
 
         setBalance(douyaBalance);
@@ -92,7 +92,7 @@ export default function Staking(props) {
 
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-    console.log("from redux at NFT page", webObj);
+    // console.log("from redux at NFT page", webObj);
     // console.log("accounts", accounts[0]);
 
     if (accounts && accounts.length !== 0) {
@@ -114,11 +114,11 @@ export default function Staking(props) {
         deployedNetwork_douya && deployedNetwork_douya.address,
       );
 
-      console.log("contract is ", contract);
+      // console.log("contract is ", contract);
 
       await contract_douya.methods.approve(contract._address, web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("result", result);
-        console.log("error", error);
+        // console.log("result", result);
+        // console.log("error", error);
       });
 
       await contract.methods.stakeTokens(web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
@@ -127,15 +127,15 @@ export default function Staking(props) {
 
       // update page balance
       let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
+        // console.log("stakingBalance result", result);
+        // console.log("error", error);
       });
 
       setBalance(douyaBalance);
 
       let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
+        // console.log("stakingBalance result", result);
+        // console.log("error", error);
       });
 
       setStaking(stakingBalance);
@@ -165,7 +165,7 @@ export default function Staking(props) {
 
     // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
     // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-    console.log("from redux at NFT page", webObj);
+    // console.log("from redux at NFT page", webObj);
     // console.log("accounts", accounts[0]);
 
     if (accounts && accounts.length !== 0) {
@@ -187,7 +187,7 @@ export default function Staking(props) {
         deployedNetwork_douya && deployedNetwork_douya.address,
       );
 
-      console.log("contract is ", contract);
+      // console.log("contract is ", contract);
 
       await contract.methods.unstakeTokens().send({ from: accounts[0], gas: 1000000 }).on('transactionHash', (hash) => {
         setLoading(false)
@@ -195,15 +195,15 @@ export default function Staking(props) {
 
       // update page balance
       let douyaBalance = await contract_douya.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
+        // console.log("stakingBalance result", result);
+        // console.log("error", error);
       });
 
       setBalance(douyaBalance);
 
       let stakingBalance = await contract.methods.stakingBalance(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-        console.log("stakingBalance result", result);
-        console.log("error", error);
+        // console.log("stakingBalance result", result);
+        // console.log("error", error);
       });
 
       setStaking(stakingBalance);

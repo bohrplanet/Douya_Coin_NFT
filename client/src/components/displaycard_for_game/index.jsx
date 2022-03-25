@@ -7,11 +7,11 @@ import DouyaNFT from "../../contracts/DouyaNFT.json"
 
 export default function DisplayCardForGame(props) {
 
-    console.log("props", props);
+    // console.log("props", props);
 
     const nft = props.nft;
 
-    console.log("nft is", nft);
+    // console.log("nft is", nft);
 
     async function dig() {
 
@@ -29,7 +29,7 @@ export default function DisplayCardForGame(props) {
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-        console.log("from redux at NFT page", webObj);
+        // console.log("from redux at NFT page", webObj);
         // console.log("accounts", accounts[0]);
 
         if (accounts && accounts.length !== 0) {
@@ -45,15 +45,15 @@ export default function DisplayCardForGame(props) {
                 deployedNetwork && deployedNetwork.address,
             );
 
-            console.log("contract is ", contract);
+            // console.log("contract is ", contract);
 
             // dig 方法
             const count = await contract.methods.dig(accounts[0], nft.tokenId).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                console.log("result", result);
-                console.log("error", error);
+                // console.log("result", result);
+                // console.log("error", error);
             });
 
-            console.log("count is", count);
+            // console.log("count is", count);
 
         }
 

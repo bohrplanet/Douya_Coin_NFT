@@ -18,7 +18,7 @@ export default function Buy(props) {
 
     React.useEffect(() => {
 
-        console.log("useEffect method invoked!");
+        // console.log("useEffect method invoked!");
 
         let webObj = store.getState();
 
@@ -26,10 +26,10 @@ export default function Buy(props) {
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把eth和豆芽币的值拿到，set给state
-        console.log("from redux", webObj);
-        console.log("accounts", accounts);
+        // console.log("from redux", webObj);
+        // console.log("accounts", accounts);
         if (accounts) {
-            console.log("accounts length", accounts.length);
+            // console.log("accounts length", accounts.length);
         }
 
         // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
@@ -76,21 +76,21 @@ export default function Buy(props) {
 
         if (accounts && accounts.length !== 0) {
 
-            console.log("x", x.current.input.value);
+            // console.log("x", x.current.input.value);
             await contract.methods.withdraw(web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                console.log("交易已经发出,等待钱包响应");
+                // console.log("交易已经发出,等待钱包响应");
             }).on('transactionHash', function (hash) {
-                console.log("1111111");
-                console.log(hash);
+                // console.log("1111111");
+                // console.log(hash);
             }).on('confirmation', function (confirmationNumber, receipt) {
                 // console.log("2222222");
                 // console.log(receipt);
             }).on('receipt', function (receipt) {
-                console.log("33333333");
-                console.log(receipt);
+                // console.log("33333333");
+                // console.log(receipt);
                 for (var e in receipt.events) {
                     if (e === "Sold") {
-                        console.log("兑换成功！");
+                        // console.log("兑换成功！");
                     }
                 }
             }).on('error', console.error);
@@ -102,7 +102,7 @@ export default function Buy(props) {
                 }
             });
 
-            console.log("aaa", aaa);
+            // console.log("aaa", aaa);
 
             setDouyacoin(aaa);
 
@@ -132,21 +132,21 @@ export default function Buy(props) {
 
         if (accounts && accounts.length !== 0) {
 
-            console.log("y", y.current.input.value);
+            // console.log("y", y.current.input.value);
             await contract.methods.exchange().send({ from: accounts[0], value: web3.utils.toWei(y.current.input.value, 'ether'), gas: 1000000 }, function (error, result) {
-                console.log("交易已经发出,等待钱包响应");
+                // console.log("交易已经发出,等待钱包响应");
             }).on('transactionHash', function (hash) {
-                console.log("1111111");
+                // console.log("1111111");
                 // console.log(hash);
             }).on('confirmation', function (confirmationNumber, receipt) {
                 // console.log("2222222");
                 // console.log(receipt);
             }).on('receipt', function (receipt) {
-                console.log("33333333");
+                // console.log("33333333");
                 // console.log(receipt);
                 for (var e in receipt.events) {
                     if (e === "Bought") {
-                        console.log("兑换成功！");
+                        // console.log("兑换成功！");
                     }
                 }
             }).on('error', console.error);

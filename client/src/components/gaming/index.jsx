@@ -19,7 +19,7 @@ export default function Game(props) {
 
             // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
             // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
-            console.log("from redux at NFT page", webObj);
+            // console.log("from redux at NFT page", webObj);
             // console.log("accounts", accounts[0]);
 
             const nfts = []
@@ -38,14 +38,14 @@ export default function Game(props) {
                     deployedNetwork && deployedNetwork.address,
                 );
 
-                console.log("contract is ", contract);
+                // console.log("contract is ", contract);
 
                 // const myNFTs = [];
 
                 // 返回一个数组，每个数组中的值为拥有的nft的tokenid
                 const count = await contract.methods.getByOwner(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
-                    console.log("count result", result);
-                    console.log("error", error);
+                    // console.log("count result", result);
+                    // console.log("error", error);
                 });
 
                 // setMyNFTs([]);
@@ -76,7 +76,7 @@ export default function Game(props) {
 
                     await setMyNFTs(nfts);
 
-                    console.log("myNFTs", myNFTs);
+                    // console.log("myNFTs", myNFTs);
 
                 })
 
