@@ -81,7 +81,7 @@ export default function Staking(props) {
 
     const { web3, accounts } = webObj;
 
-    if (accounts === null || accounts.length === 0) {
+    if (!accounts || accounts.length === 0) {
       return message.info('Connect wallet first please.');
     }
 
@@ -156,7 +156,7 @@ export default function Staking(props) {
 
     const { web3, accounts } = webObj;
 
-    if (accounts === null || accounts.length === 0) {
+    if (!accounts || accounts.length === 0) {
       return message.info('Connect wallet first please.');
     }
 

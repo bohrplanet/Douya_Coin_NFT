@@ -33,6 +33,7 @@ export default function Buy(props) {
         }
 
         if (accounts && accounts.length !== 0) {
+            
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
                     setDouyacoin(result)
@@ -64,7 +65,7 @@ export default function Buy(props) {
 
         const { web3, accounts, contract } = webObj;
 
-        if (accounts === null || accounts.length === 0) {
+        if (!accounts || accounts.length === 0) {
             return message.info('Connect wallet first please.');
         }
 
@@ -120,7 +121,7 @@ export default function Buy(props) {
 
         const { web3, accounts, contract } = webObj;
 
-        if (accounts === null || accounts.length === 0) {
+        if (!accounts || accounts.length === 0) {
             return message.info('Connect wallet first please.');
         }
 
