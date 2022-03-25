@@ -27,7 +27,7 @@ export default function Staking(props) {
       console.log("from redux at NFT page", webObj);
       // console.log("accounts", accounts[0]);
 
-      if (accounts && accounts.length !== 0 && web3.eth.net.getId() === 3) {
+      if (accounts && accounts.length !== 0 && window.ethereum.chainId !== "0x3") {
 
         // Use web3 to get the user's accounts.
         const accounts = await web3.eth.getAccounts();
