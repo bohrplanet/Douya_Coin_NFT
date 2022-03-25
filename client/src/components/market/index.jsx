@@ -118,7 +118,7 @@ export default function Market(props) {
             <div className='nft_list'>
                 {
                     myNFTs.map((nft, index) => {
-                        return <DisplayCardForMarket nft={nft} />
+                        return <DisplayCardForMarket key={index} nft={nft} />
                     })
                 }
 

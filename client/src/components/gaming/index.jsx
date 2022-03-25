@@ -101,7 +101,7 @@ export default function Game(props) {
             <div className='nft_list'>
                 {
                     myNFTs.map((nft, index) => {
-                        return <DisplayCardForGame nft={nft} />
+                        return <DisplayCardForGame key={index} nft={nft} />
                     })
                 }
 
