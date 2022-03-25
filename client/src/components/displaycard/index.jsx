@@ -26,9 +26,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        // if (window.ethereum.chainId !== "0x3") {
-        //     return message.info('Change network to Ropsten Test Network.');
-        // }
+        if (window.ethereum.chainId !== "0x3") {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
@@ -75,9 +75,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        // if (window.ethereum.chainId !== "0x3") {
-        //     return message.info('Change network to Ropsten Test Network.');
-        // }
+        if (window.ethereum.chainId !== "0x3") {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
@@ -122,9 +122,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        // if (window.ethereum.chainId !== "0x3") {
-        //     return message.info('Change network to Ropsten Test Network.');
-        // }
+        if (window.ethereum.chainId !== "0x3") {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state

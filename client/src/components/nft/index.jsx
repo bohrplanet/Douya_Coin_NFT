@@ -26,8 +26,8 @@ export default function Nft(props) {
 
             // console.log("accounts is ", accounts);
 
-            // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
-            if (accounts && accounts.length !== 0) {
+            if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
+            // if (accounts && accounts.length !== 0) {
 
 
                 // Use web3 to get the user's accounts.

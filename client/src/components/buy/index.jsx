@@ -32,8 +32,8 @@ export default function Buy(props) {
             // console.log("accounts length", accounts.length);
         }
 
-        // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
-        if (accounts && accounts.length !== 0) {
+        if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
+        // if (accounts && accounts.length !== 0) {
 
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
@@ -70,9 +70,9 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        // if (window.ethereum.chainId !== "0x3") {
-        //     return message.info('Change network to Ropsten Test Network.');
-        // }
+        if (window.ethereum.chainId !== "0x3") {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         if (accounts && accounts.length !== 0) {
 
@@ -126,9 +126,9 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        // if (window.ethereum.chainId !== "0x3") {
-        //     return message.info('Change network to Ropsten Test Network.');
-        // }
+        if (window.ethereum.chainId !== "0x3") {
+            return message.info('Change network to Ropsten Test Network.');
+        }
 
         if (accounts && accounts.length !== 0) {
 
