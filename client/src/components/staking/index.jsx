@@ -85,7 +85,7 @@ export default function Staking(props) {
       return message.info('Connect wallet first please.');
     }
 
-    if (await web3.eth.net.getId() !== 3) {
+    if (window.ethereum.chainId !== "0x3") {
       return message.info('Change network to Ropsten Test Network.');
     }
 
@@ -160,7 +160,7 @@ export default function Staking(props) {
       return message.info('Connect wallet first please.');
     }
 
-    if (await web3.eth.net.getId() !== 3) {
+    if (window.ethereum.chainId !== "0x3") {
       return message.info('Change network to Ropsten Test Network.');
     }
 

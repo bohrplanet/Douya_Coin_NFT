@@ -32,7 +32,7 @@ export default function Buy(props) {
             console.log("accounts length", accounts.length);
         }
 
-        if (accounts && accounts.length !== 0 && window.ethereum.chainId !== "0x3") {
+        if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
             
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
@@ -69,7 +69,7 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (await web3.eth.net.getId() !== 3) {
+        if (window.ethereum.chainId !== "0x3") {
             return message.info('Change network to Ropsten Test Network.');
         }
 
@@ -125,7 +125,7 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (await web3.eth.net.getId() !== 3) {
+        if (window.ethereum.chainId !== "0x3") {
             return message.info('Change network to Ropsten Test Network.');
         }
 

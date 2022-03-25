@@ -93,8 +93,8 @@ class App extends Component {
       this.setState({ setIsModalVisible: true });
 
       // uncomment this line when deploy to ropsten network  
-      } else if (window.ethereum.chainId !== "0x3") {
-    // } else if (!web3) {
+      // } else if (window.ethereum.chainId !== "0x3") {
+    } else if (!web3) {
 
       this.setState({ setIsModalVisible_network: true });
     }
