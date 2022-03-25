@@ -26,9 +26,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (window.ethereum.chainId !== "0x3") {
-            return message.info('Change network to Ropsten Test Network.');
-        }
+        // if (window.ethereum.chainId !== "0x3") {
+        //     return message.info('Change network to Ropsten Test Network.');
+        // }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
@@ -75,9 +75,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (window.ethereum.chainId !== "0x3") {
-            return message.info('Change network to Ropsten Test Network.');
-        }
+        // if (window.ethereum.chainId !== "0x3") {
+        //     return message.info('Change network to Ropsten Test Network.');
+        // }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
@@ -99,7 +99,7 @@ export default function DisplayCard(props) {
 
             console.log("contract is ", contract);
 
-            await contract.methods.sale(nft.tokenId, x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+            await contract.methods.sale(nft.tokenId, web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 console.log("result", result);
                 console.log("error", error);
             });
@@ -122,9 +122,9 @@ export default function DisplayCard(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (window.ethereum.chainId !== "0x3") {
-            return message.info('Change network to Ropsten Test Network.');
-        }
+        // if (window.ethereum.chainId !== "0x3") {
+        //     return message.info('Change network to Ropsten Test Network.');
+        // }
 
         // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
         // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state

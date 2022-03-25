@@ -17,19 +17,20 @@ export default function Market(props) {
             let webObj = store.getState();
 
             const { web3, accounts } = webObj;
-    
+
             // 先去redux里面访问web3对象，如果不存在，那么就把值设置为connect wallet to watch
             // 如果有web3对象，那么就调用方法，把我的每个nft的属性值拿到，set给state
             console.log("from redux at NFT page", webObj);
             // console.log("accounts", accounts[0]);
-    
+
             const nfts = []
-    
-            if (accounts && accounts.length !== 0 && window.ethereum.chainId !== "0x3") {
-    
+
+            // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
+            if (accounts && accounts.length !== 0) {
+
                 // Use web3 to get the user's accounts.
                 const accounts = await web3.eth.getAccounts();
-    
+
                 // Get the contract instance.
                 const networkId = await web3.eth.net.getId();
                 const deployedNetwork = Market_contract.networks[networkId];
@@ -37,7 +38,7 @@ export default function Market(props) {
                     Market_contract.abi,
                     deployedNetwork && deployedNetwork.address,
                 );
-    
+
                 // Get the contract instance.
                 const networkId_nft = await web3.eth.net.getId();
                 const deployedNetwork_nft = DouyaNFT.networks[networkId_nft];
@@ -45,19 +46,19 @@ export default function Market(props) {
                     DouyaNFT.abi,
                     deployedNetwork_nft && deployedNetwork_nft.address,
                 );
-    
+
                 console.log("contract is ", contract);
-    
+
                 // 返回shop的数组
                 const count = await contract.methods.getShop().call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                     console.log("count result", result);
                     console.log("error", error);
                 });
-    
+
                 console.log("shop count is ", count);
-    
+
                 count.map(async (token, index) => {
-    
+
                     if (token !== 0) {
                         console.log("token is", token);
                         // 通过每个tokenId，访问合约，拿到每个tokenId的图片链接，以及power值
@@ -66,7 +67,7 @@ export default function Market(props) {
                             // console.log("error", error);
                         });
                         // console.log("imageUri is", imageUri);
-    
+
                         const power = await contract_nft.methods.getPower(token).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                             // console.log("power result", result);
                             // console.log("error", error);
@@ -77,30 +78,30 @@ export default function Market(props) {
                             console.log("count result", result);
                             console.log("error", error);
                         });
-            
+
                         console.log("shop count is ", count);
-    
+
                         let nftObj = {
                             imageUri: imageUri,
                             power: power,
                             tokenId: token,
                             price: price
                         };
-    
+
                         await nfts.push(nftObj);
-    
+
                         // console.log("myNTFs is ", nfts);
-    
+
                         await setMyNFTs(nfts);
-    
+
                         console.log("myNFTs", myNFTs);
                     }
-    
+
                 })
             }
-    
+
             else {
-    
+
             }
         }
 

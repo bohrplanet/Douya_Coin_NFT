@@ -32,8 +32,9 @@ export default function Buy(props) {
             console.log("accounts length", accounts.length);
         }
 
-        if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
-            
+        // if (accounts && accounts.length !== 0 && window.ethereum.chainId === "0x3") {
+        if (accounts && accounts.length !== 0) {
+
             contract.methods.balanceOf(accounts[0]).call({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 if (result !== douyacoin) {
                     setDouyacoin(result)
@@ -69,14 +70,14 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (window.ethereum.chainId !== "0x3") {
-            return message.info('Change network to Ropsten Test Network.');
-        }
+        // if (window.ethereum.chainId !== "0x3") {
+        //     return message.info('Change network to Ropsten Test Network.');
+        // }
 
         if (accounts && accounts.length !== 0) {
 
             console.log("x", x.current.input.value);
-            await contract.methods.withdraw(x.current.input.value * (10 ** 18) + "").send({ from: accounts[0], gas: 1000000 }, function (error, result) {
+            await contract.methods.withdraw(web3.utils.toWei(x.current.input.value, 'ether')).send({ from: accounts[0], gas: 1000000 }, function (error, result) {
                 console.log("交易已经发出,等待钱包响应");
             }).on('transactionHash', function (hash) {
                 console.log("1111111");
@@ -125,14 +126,14 @@ export default function Buy(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (window.ethereum.chainId !== "0x3") {
-            return message.info('Change network to Ropsten Test Network.');
-        }
+        // if (window.ethereum.chainId !== "0x3") {
+        //     return message.info('Change network to Ropsten Test Network.');
+        // }
 
         if (accounts && accounts.length !== 0) {
 
             console.log("y", y.current.input.value);
-            await contract.methods.exchange().send({ from: accounts[0], value: y.current.input.value * (10 ** 18), gas: 1000000 }, function (error, result) {
+            await contract.methods.exchange().send({ from: accounts[0], value: web3.utils.toWei(y.current.input.value, 'ether'), gas: 1000000 }, function (error, result) {
                 console.log("交易已经发出,等待钱包响应");
             }).on('transactionHash', function (hash) {
                 console.log("1111111");
