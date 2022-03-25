@@ -25,7 +25,7 @@ export default function Market(props) {
     
             const nfts = []
     
-            if (accounts && accounts.length !== 0) {
+            if (accounts && accounts.length !== 0 && web3.eth.net.getId() === 3) {
     
                 // Use web3 to get the user's accounts.
                 const accounts = await web3.eth.getAccounts();

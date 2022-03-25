@@ -23,7 +23,7 @@ export default function DisplayCardForMarket(props) {
             return message.info('Connect wallet first please.');
         }
 
-        if (web3.eth.net.getId() !== 3) {
+        if (await web3.eth.net.getId() !== 3) {
             return message.info('Change network to Ropsten Test Network.');
         }
 
