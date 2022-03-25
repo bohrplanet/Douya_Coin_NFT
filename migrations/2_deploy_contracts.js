@@ -23,7 +23,7 @@ module.exports = async function(deployer) {
   await douyaNFT.setRole(market.address)
 
   // set BaseURI
-  await douyaNFT.setBaseURI("https://gateway.pinata.cloud/ipfs/QmTRcZk1y6S68P9ZSaBtiZ4jQb7fx36Bym5vZpksrfCZ2v/")
+  await douyaNFT.setBaseURI("https://gateway.pinata.cloud/ipfs/QmZcdctuSNaW4Eyo1xD3ueE4HKXwHsMmZeyGq5Gq5Zk55v/")
   await douyaNFT.setNotRevealedURI("https://gateway.pinata.cloud/ipfs/QmRmuhXvmiojStoVrHhmLh8ihsQv2m8Af5ftGEKKoN8FEw")
 
   // open sale active and open reveal
