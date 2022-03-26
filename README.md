@@ -9,4 +9,4 @@ This is a blockchain project relate to ERC20, ERC721, ERC1155, DeFi and GameFi
 4. Sell/Cancel NFT: set sale price, then press Sale button, you can also cancel the sale.
 5. Dig the grass, earn Douya Coin: you can use NFT to dig, earn Douya Coin, 1 time every 24 hours.
 6. Buy NFT at NFT market.
-7. Staking your Douya Coin.
+7. Staking your Douya Coin, reward Douya coin when staking.
