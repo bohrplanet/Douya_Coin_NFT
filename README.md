@@ -2,7 +2,7 @@
 
 This is a blockchain project relate to ERC20, ERC721, ERC1155, DeFi and GameFi
 
-# Function:
+# How to use:
 1. Deposit ETH: ETH to Douya Coin, at Buy page, input amount, then press Submit, wait around 1 min, let blockchain confirm.
 2. Withdraw ETH: The same as above
 3. Buy NFT: at NFT page, press Buy button, confirm at Metamask page, wait around 1 min, let blockchain confirm.
