@@ -11,6 +11,7 @@ import Game from './components/gaming'
 import Market from "./components/market";
 import Staking from "./components/staking";
 import About from './components/about'
+import Howtouse from "./components/howtouse"
 import Web3 from "web3";
 import store from './redux/store'
 
@@ -93,8 +94,8 @@ class App extends Component {
       this.setState({ setIsModalVisible: true });
 
       // uncomment this line when deploy to ropsten network  
-      } else if (window.ethereum.chainId !== "0x3") {
-    // } else if (!web3) {
+    } else if (window.ethereum.chainId !== "0x3") {
+      // } else if (!web3) {
 
       this.setState({ setIsModalVisible_network: true });
     }
@@ -283,6 +284,7 @@ class App extends Component {
               <Menu.Item key="6"><Link to="/staking">Staking</Link></Menu.Item>
               <Menu.Item key="7"><Link to="/about">About Douya</Link></Menu.Item>
               <Menu.Item key="8" onClick={this.connectToWallet}>Connect</Menu.Item>
+              <Menu.Item key="9"><Link to="/howtouse">How to use</Link></Menu.Item>
             </Menu>
           </Header>
 
@@ -295,6 +297,7 @@ class App extends Component {
             <Route path="/staking" element={<Staking />} />
             <Route path="/about" element={<About />} />
             <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/howtouse" element={<Howtouse />} />
           </Routes>
 
           <Footer style={{ textAlign: 'center' }}>Made with ❤ by Bohr @2022 email: crypto18mo@gmail.com</Footer>
